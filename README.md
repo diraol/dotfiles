@@ -6,7 +6,7 @@ Dot files based on "Homesick"
 To install and use this configurations, you need to install ruby/rubygems first:
 
     # Install Ruby:
-    sudo aptitude install ruby rdoc irb
+    sudo aptitude install ruby rdoc irb git
     #
     # Download the latest rubygems from: http://rubyforge.org/projects/rubygems/
     #       In my case was rubygems-1.8.25.tgz
