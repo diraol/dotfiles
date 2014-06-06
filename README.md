@@ -31,4 +31,7 @@ To install and use this configurations, you need to install ruby/rubygems first:
     # p.ex.: dotfiles  git@github.com:diraol/dotfiles.git
     #
     # To "activate" a repository
-    homesick symlink dotfiles
+    # homesick symlink dotfiles
+    #
+    # or use the bootstrap function
+    ~/.homesick/repos/dotfiles/bootstrap.sh
