@@ -8,8 +8,8 @@ To install and use this configurations, you need to install ruby/rubygems first:
     # Install Ruby:
     sudo aptitude install ruby rdoc irb git
     #
-    # Download the latest rubygems from: http://rubyforge.org/projects/rubygems/
-    #       In my case was rubygems-1.8.25.tgz
+    # Download the latest rubygems from: https://rubygems.org/pages/download
+    #       In my case was rubygems-2.3.0.tgz
     #
     # Unpack it
     tar xzf rubygems-1.8.25.tgz
