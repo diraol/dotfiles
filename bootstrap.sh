@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 
 echo "1 - Instalando pacotes básicos iniciais"
 sudo aptitude install -y ruby rdoc irb git vim
@@ -14,6 +14,7 @@ tar xzf rubygems-2.3.0.tgz
 echo "4 - Instalando o RubyGems"
 cd rubygems-2.3.0
 sudo ruby setup.rb all
+sudo gem update --system
 
 echo "5 - Removendo pasta do rubygems não mais necessária"
 cd ..
@@ -27,6 +28,7 @@ homesick clone https://github.com/diraol/dotfiles.git
 
 echo "8 - Instalando ctags"
 sudo apt-get install exuberant-ctags -y
+cd ~/.homesick/repos/dotfiles/
 git submodule update --init
 homesick symlink dotfiles
 
