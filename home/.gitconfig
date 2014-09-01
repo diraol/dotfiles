@@ -40,3 +40,5 @@
   insteadOf = drupal://
 [url "http://git.drupal.org/sandbox/"]
   insteadOf = drupalsand://
+[branch]
+  autosetuprebase = always
