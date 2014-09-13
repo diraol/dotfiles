@@ -1,6 +1,15 @@
-alias radar_google='ssh -i .ssh/google_compute_engine.pem lleite@108.59.85.88'
-alias nuvemusp='ssh -p 50022 cloudusp@200.144.255.238'
-alias digiocean='ssh polignu@$DOHOST'
+
 GHOST='108.59.85.88'
 DOHOST='162.243.114.174'
 DHHOST='173.236.179.105'
+RADARVMUSP='200.144.254.67'
+PGNUVMUSP='200.144.254.67'
+EDXUSP='200.144.255.238'
+alias radar_vm_usp='ssh -i ~/.ssh/google_compute_engine.pem cloudusp@$RADARVMUSP'
+alias polignu_vm_usp='ssh -i ~/.ssh/google_compute_engine.pem cloudusp@$PGNUVMUSP'
+alias edx_vm_usp='ssh -p 50022 cloudusp@$EDXUSP'
+alias digiocean='ssh polignu@$DOHOST'
+alias radar_google='ssh -i ~/.ssh/google_compute_engine.pem lleite@$GHOST'
+alias diraol_dreamhost='ssh diraol@$DHHOST'
+alias polignu_dreamhost='ssh polignu@$DHHOST'
+
