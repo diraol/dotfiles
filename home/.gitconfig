@@ -42,3 +42,7 @@
   insteadOf = drupalsand://
 [branch]
   autosetuprebase = always
+[cola]
+	fontdiff = Inconsolata,11,-1,5,50,0,0,0,0,0
+[gui]
+	editor = gedit
