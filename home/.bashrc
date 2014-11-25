@@ -112,3 +112,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export PATH=/home/diraol/tools/android-sdk-linux/tools:/home/diraol/tools/android-sdk-linux/platform-tools:$PATH
