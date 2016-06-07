@@ -18,6 +18,9 @@ POWERLINE_HIDE_USER_NAME="true"
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
+POWERLINE_PATH="short"
+POWERLINE_CUSTOM_CURRENT_PATH="%3~"
+POWERLINE_DETECT_SSH="true"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -84,7 +87,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1 # Let Virtualenv prompt show up in the zsh t
 #export PYTHONDOCS=/usr/share/doc/python2/html/ # Needed for the python2-docs package.
 
 # Get the keychain running.
-eval `keychain --eval --agents ssh id_rsa --quiet`
+#eval `keychain --eval --agents ssh id_rsa --quiet`
 
 # Tmuxinator tab names are overriden by zsh auto title.
 export DISABLE_AUTO_TITLE='true'

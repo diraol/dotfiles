@@ -4,3 +4,9 @@
 [submodule "home/.dircolors"]
 	path = home/.dircolors
 	url = https://github.com/sigurdga/ls-colors-solarized.git
+[submodule "home/.oh-my-zsh"]
+	path = home/.oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "home/.oh-my-zsh-themes/powerline"]
+	path = home/.oh-my-zsh-themes/powerline
+	url = https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git

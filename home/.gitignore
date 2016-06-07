@@ -5,3 +5,7 @@ node_modules/
 .*.swp
 doc/tags
 .netrwhist
+.idea
+.RData
+.Rhistory
+.~lock.*

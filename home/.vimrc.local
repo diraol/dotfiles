@@ -1,10 +1,11 @@
 set wrap                      " visually wrap lines
 set smartindent               " smart indenting
-set shiftwidth=2              " default to two spaces
-set tabstop=2                 " default to two spaces
-set softtabstop=2             " default to two spaces
+set shiftwidth=4              " default to two spaces
+set tabstop=4                 " default to two spaces
+set softtabstop=4             " default to two spaces
 set shiftround                " always round indentation to shiftwidth
 set mouse=                    " disable mouse
+set expandtab
 
 "set t_Co=16                   " set vim terminal to 16 color mode
 let g:CSApprox_loaded=1       " disable csapprox
@@ -20,7 +21,7 @@ unlet g:airline_left_sep
 unlet g:airline_right_sep
 
 " Increase indenting for javascript and python
-autocmd FileType javascript,python setlocal sw=4 ts=4 sts=4
+autocmd FileType javascript,python,php setlocal sw=4 ts=4 sts=4
 
 let g:pymode_rope=0 " Don't need this right now.
 UnBundle 'spf13/vim-preview'
