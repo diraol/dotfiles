@@ -1,12 +1,16 @@
-# Path to your oh-my-zsh configuration.
+# Path to your oh-my-zsh installation directory.
 ZSH=$HOME/.oh-my-zsh
 
 # Use solarized colors from sigurdga/ls-colors-solarized
-eval `dircolors /home/barraponto/.local/opt/ls-colors-solarized/dircolors`
+eval `dircolors ~/.dircolors/dircolors`
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
 # Powerline theme installed from jeremyFreeAgent/oh-my-zsh-powerline-theme
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
+# ZSH_THEME='bureau'
 ZSH_THEME="powerline"
 
 # Powerline theme options.
@@ -15,49 +19,90 @@ POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
 
+# Uncomment the following line to use case-sensitive completion.
+CASE_SENSITIVE="true"
+
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
+
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(archlinux compleat fasd gem git github history-substring-search mercurial node npm pip python rvm screen sprunge systemd urltools vagrant virtualenv virtualenvwrapper)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(systemd debian colorize tmux git git-extras autopep8 github jsontools pep8 python pip virtualenvwrapper tmux zsh-navigation-tools)
+
+# User configuration
+
+export DEFAULT_USER="diraol"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+# export MANPATH="/usr/local/man:$MANPATH"
+zstyle ':omz:module:tmux' auto-start 'yes'
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOCONNECT='false'
 
 # OH MY ZSH! from robbyrussell/oh-my-zsh.
 source $ZSH/oh-my-zsh.sh
-
-# Gibo: gitignore boilerplates from simonwhitaker/gitignore-boilerplates.
-source ~/.local/opt/gitignore-boilerplates/gibo-completion.zsh
-
 # Aliases
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim -p ~/.vimrc.local ~/.vimrc.bundles.local"
-alias lodgeit="python2 ~/.local/opt/lodgeit-main/scripts/lodgeit.py"
-
-# Path extensions
-export PATH=$PATH:/opt/android-sdk/platform-tools:/opt/android-sdk/tools # Android SDK
-export PATH=$PATH:/opt/grass/bin # Grass GIS
-export PATH=$PATH:/opt/kde/bin # KDE stuff from kde3libs
-export PATH=$PATH:/opt/qt/bin # QT stuff from qt3
-export PATH=$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl # System Perl packages
-export PATH=$PATH:$HOME/.rvm/bin # RVM scripts and wrappers
-export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin # Local Ruby gems executables
-export PATH=$PATH:$HOME/.cabal/bin # Local Cabal packages executables
-export PATH=$PATH:$HOME/.local/npm-packages/bin # NPM global packages
-export PATH=$PATH:$HOME/.local/bin # My local packages
 
 # Other exports
 export EDITOR=vim # Bitch, please.
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # Let Virtualenv prompt show up in the zsh theme.
-export PYTHONDOCS=/usr/share/doc/python2/html/ # Needed for the python2-docs package.
+#export PYTHONDOCS=/usr/share/doc/python2/html/ # Needed for the python2-docs package.
 
 # Get the keychain running.
 eval `keychain --eval --agents ssh id_rsa --quiet`
 
-# Scrapy helper functions
-function scrapy-devel () { eval "echo '' > ~/Desktop/$1-results.csv && scrapy crawl --set=HTTPCACHE_ENABLED=1 $1 --output-format=csv --output=/home/barraponto/Desktop/$1-results.csv > ~/Desktop/$1-results.log" }
-function scrapy-debug () { eval "echo '' > ~/Desktop/$1-results.csv && scrapy crawl --set=HTTPCACHE_ENABLED=1 --loglevel=INFO $1 --output-format=csv --output=/home/barraponto/Desktop/$1-results.csv > ~/Desktop/$1-results.log" }
-
 # Tmuxinator tab names are overriden by zsh auto title.
 export DISABLE_AUTO_TITLE='true'
 
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="source ~/.zshrc"
+# alias ohmyzsh="source ~/.oh-my-zsh"
+
+source ~/.diraol_ssh_aliases
+source ~/.diraol_other_aliases_and_commands

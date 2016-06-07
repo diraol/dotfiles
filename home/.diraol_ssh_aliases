@@ -11,4 +11,3 @@
 #alias radar_google='ssh -i ~/.ssh/google_compute_engine.pem lleite@$GHOST'
 #alias diraol_dreamhost='ssh diraol@$DHHOST'
 #alias polignu_dreamhost='ssh polignu@$DHHOST'
-

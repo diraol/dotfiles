@@ -113,4 +113,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=/home/diraol/tools/android-sdk-linux/tools:/home/diraol/tools/android-sdk-linux/platform-tools:$PATH
+source ~/.diraol_ssh_aliases
+source ~/.diraol_other_aliases_and_commands

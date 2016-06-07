@@ -1,0 +1,11 @@
+alias sizesort='du -a -h --max-depth=1 | sort -hr'
+
+# Android dev
+# export PATH=/home/diraol/tools/android-sdk-linux/tools:/home/diraol/tools/android-sdk-linux/platform-tools:$PATH
+
+# For lenovo x230t
+function reboot_wacom() {
+    echo "Rebootando o Wacom device"
+    echo "Insira a senha de root do sistema"
+    su - -c 'rmmod wacom; modprobe wacom'
+}
