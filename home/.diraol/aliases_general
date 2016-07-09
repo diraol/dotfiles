@@ -1,7 +1,13 @@
 alias sizesort='du -a -h --max-depth=1 | sort -hr'
 
+# vim shortcut
+alias vim='vim -p'
+
 # Android dev
 # export PATH=/home/diraol/tools/android-sdk-linux/tools:/home/diraol/tools/android-sdk-linux/platform-tools:$PATH
+
+# Vim plugins update
+vim +BundleInstall +BundleClean +qall
 
 # For lenovo x230t
 function reboot_wacom() {

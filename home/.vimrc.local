@@ -1,3 +1,4 @@
+set term=xterm-256color
 set wrap                      " visually wrap lines
 set smartindent               " smart indenting
 set shiftwidth=4              " default to two spaces
@@ -8,13 +9,29 @@ set mouse=                    " disable mouse
 set expandtab
 
 "set t_Co=16                   " set vim terminal to 16 color mode
-let g:CSApprox_loaded=1       " disable csapprox
-"let g:solarized_termcolors=16 " tell solarized to trust the terminal 16 colors
-color peaksea               " use the solarized colorscheme
-"set background=light          " match light-solarized terminal emulators
+syntax enable
+set t_Co=256
+let g:CSApprox_loaded=0       " disable csapprox
+let g:solarized_termcolors=16 " tell solarized to trust the terminal 16 colors
+let g:solarized_termtrans=1
+let g:solarized_bold=0
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+set background=dark
+colorscheme solarized
+" color peaksea               " use the solarized colorscheme
 
+" highlight ColorColumn ctermbg=gray
+let &colorcolumn="80,".join(range(120,999),",")
+set cc=80
+
+" setting markdown for md files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+let g:indent_guides_enable_on_vim_startup = 0 " disable visible guides at indent points
 let g:autoclose_vim_commentmode=1       " don't autoclose quotes in vim files
-let g:pymode_lint_checker="pep8,pylint" " pep8, then pylint. no pyflakes.
+let g:pymode_lint_checker="pep8, pylint, pyflakes, pep257"
+let g:pymode_lint_on_write=0
 
 let g:airline_powerline_fonts=1
 unlet g:airline_left_sep
@@ -71,8 +88,9 @@ map <leader>pp :setlocal paste!<cr>
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Disable spellcheck
+"set spell spelllang=en
 setlocal spell!
-
+set nospell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

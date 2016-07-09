@@ -1,82 +1,49 @@
 !/usr/bin/env bash
+if ! type "sudo" > /dev/null; then
+  alias sudo='su -c"$*"'
+  echo "You do not have 'sudo' installed, so I'll ask your password in every 'sudo' step."
+fi
 
-echo "1 - Instalando pacotes básicos iniciais"
-sudo aptitude install -y ruby rdoc irb git vim
+echo "01 - Installing basic packages (ruby, git, vim, irc, rdoc, tmux, pip)"
+sudo aptitude install -y ruby rdoc irb git vim python-pip python-pip3 tmux
 
-echo "2 - Baixando RubyGems no diretório ~/tools/"
+echo "02 - Downloading RubyGems to ~/tools/"
 mkdir -p ~/tools
 cd ~/tools
-wget http://production.cf.rubygems.org/rubygems/rubygems-2.3.0.tgz
+wget https://rubygems.org/rubygems/rubygems-2.6.6.tgz
 
-echo "3 - Extraindo o pacote RubyGems"
+echo "03 - Extracting RubyGems package"
 tar xzf rubygems-2.3.0.tgz
 
-echo "4 - Instalando o RubyGems"
+echo "04 - Installing RubyGems"
 cd rubygems-2.3.0
 sudo ruby setup.rb all
+
+echo "05 - Updating rubygems"
 sudo gem update --system
 
-echo "5 - Removendo pasta do rubygems não mais necessária"
+echo "06 - Removing rubygems installer files"
 cd ..
 rm -rf rubygems*
 
-echo "6 - Instalando o homesick"
+echo "07 - Installing homesick"
 sudo gem install homesick
 
-echo "7 - Clonando o repositório do estadão dados para dotfiles"
+echo "08 - Cloning my dotfiles repo"
 homesick clone https://github.com/diraol/dotfiles.git
 
-echo "8 - Instalando ctags"
+echo "09 - Installing ctags"
 sudo apt-get install exuberant-ctags -y
+
+echo "10 - Updating homesick submodules"
 cd ~/.homesick/repos/dotfiles/
-git submodule update --init
+git submodule update --init --recursive
 homesick symlink dotfiles
 
-git_uri='https://github.com/diraol/spf13-vim.git'
-git_branch='3.0'
-VUNDLE_URI="https://github.com/gmarik/vundle.git"
+echo "11 - Installing vim plugins with Bundle/Vundle"
+vim +BundleInstall +BundleClean +qall
 
-lnif() {
-  if [ -e "$1" ]; then
-    ln -sf "$1" "$2"
-  fi
-  ret="$?"
-}
-
-clone_vundle() {
-  if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-    git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
-  else
-    cd "$HOME/.vim/bundle/vundle" &&
-    git pull origin master
-  fi
-  ret="$?"
-}
-
-create_symlinks() {
-  endpath="$HOME/.spf13-vim"
-
-  if [ ! -d "$endpath/.vim/bundle" ]; then
-    mkdir -p "$endpath/.vim/bundle"
-  fi
-
-  lnif "$endpath/.vimrc" "$HOME/.vimrc"
-  lnif "$endpath/.vimrc.bundles" "$HOME/.vimrc.bundles"
-  lnif "$endpath/.vimrc.before" "$HOME/.vimrc.before"
-  lnif "$endpath/.vim" "$HOME/.vim"
-
-  ret="$?"
-}
-
-setup_vundle() {
-  system_shell="$SHELL"
-  export SHELL='/bin/sh'
-  vim +BundleInstall +BundleClean +qall
-  export SHELL="$system_shell"
-}
-
-create_symlinks "Setting up vim symlinks"
-
-clone_vundle "Successfully cloned vundle"
-
-setup_vundle "Now updating/installing plugins using Vundle"
+# Installing Powerline
+echo "12 - Installing powerline"
+sudo pip install powerline-status
+sudo pip3 install powerline-status

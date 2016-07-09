@@ -113,5 +113,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.diraol_ssh_aliases
-source ~/.diraol_other_aliases_and_commands
+source ~/.diraol/rc

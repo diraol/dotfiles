@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh installation directory.
 ZSH=$HOME/.oh-my-zsh
 
-# Use solarized colors from sigurdga/ls-colors-solarized
-eval `dircolors ~/.dircolors/dircolors`
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -27,7 +24,6 @@ CASE_SENSITIVE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
-
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -64,25 +60,21 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(systemd debian colorize tmux git git-extras autopep8 github jsontools pep8 python pip virtualenvwrapper tmux zsh-navigation-tools)
+plugins=(systemd debian colorize tmux git git-extras autopep8 github jsontools pep8 python pip virtualenvwrapper tmux zsh-navigation-tools npm)
 
 # User configuration
-
-export DEFAULT_USER="diraol"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 zstyle ':omz:module:tmux' auto-start 'yes'
-ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOSTART="false"
 ZSH_TMUX_AUTOCONNECT='false'
 
 # OH MY ZSH! from robbyrussell/oh-my-zsh.
 source $ZSH/oh-my-zsh.sh
 # Aliases
 alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim -p ~/.vimrc.local ~/.vimrc.bundles.local"
 
 # Other exports
-export EDITOR=vim # Bitch, please.
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # Let Virtualenv prompt show up in the zsh theme.
 #export PYTHONDOCS=/usr/share/doc/python2/html/ # Needed for the python2-docs package.
 
@@ -107,5 +99,4 @@ export DISABLE_AUTO_TITLE='true'
 # alias zshconfig="source ~/.zshrc"
 # alias ohmyzsh="source ~/.oh-my-zsh"
 
-source ~/.diraol_ssh_aliases
-source ~/.diraol_other_aliases_and_commands
+source ~/.diraol/rc

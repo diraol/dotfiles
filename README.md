@@ -1,9 +1,18 @@
 dotfiles
 ========
 
-Dot files based on "Homesick"
+Dot files with on "Homesick"
 
-To install and use this configurations, you need to install ruby/rubygems first:
+To install run the following commands on the command-line:
+
+    mkdir $HOME/temp
+    wget https://github.com/diraol/dotfiles/blob/homesick/bootstrap.sh
+    chmod +x bootstrap.sh
+    ./bootstrap.sh
+
+
+To manually install and use this configurations, you need to install
+ruby/rubygems first:
 
     # Install Ruby:
     sudo aptitude install ruby rdoc irb git
