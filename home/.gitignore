@@ -1,11 +1,11 @@
-node_modules/
-.sass-cache/
 *~
-.DS_Store
+.~lock.*
 .*.swp
-doc/tags
+.sass-cache/
+.DS_Store
 .netrwhist
 .idea
 .RData
 .Rhistory
-.~lock.*
+node_modules/
+doc/tags

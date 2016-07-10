@@ -2,7 +2,7 @@
 eval `dircolors ~/.dircolors/dircolors`
 
 # Aliases
-alias vimconfig="vim ~/.vimrc.local ~/.vimrc.bundles.local"
+alias vimconfig="vim -p ~/.vimrc.local ~/.vimrc.bundles.local"
 
 # Other exports
 export DEFAULT_USER="diraol"
