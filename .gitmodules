@@ -11,5 +11,5 @@
     path = home/.oh-my-zsh-themes/powerline
     url = git@github.com:diraol/oh-my-zsh-powerline-theme.git
 [submodule "home/.local/share/rhythmbox/plugins"]
-    path = home/.local/share/rhythmbox/plugins
-    url = git@github.com:diraol/rhythmbox-tray-icon.git
+	path = home/.local/share/rhythmbox/plugins
+	url = git@github.com:diraol/rhythmbox-tray-icon.git
