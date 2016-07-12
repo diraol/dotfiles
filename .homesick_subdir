@@ -1,8 +1,5 @@
-.config/powerline
-.config/powerline/themes
-.config/powerline/themes/tmux
-.config/terminator
+.config
 .diraol
 .drush
 .i3
-.local/share/rythmbox/
+.local
