@@ -1,4 +1,61 @@
 # Adds Upstreams repository to each submodule from this CASTLE
-
+homesick_add_upstreams() {
+    CURR_PWD=`pwd`
+    CASTLE_DIR=`homesick show_path dotfiles`
+    cd $CASTLE_DIR
+    # DirColors
+    cd home/.dircolors
+    git remote add upstream https://github.com/sigurdga/ls-colors-solarized.git
+    # Rhythmbox Plugin
+    cd ../.local/share/rhythmbox/plugins
+    git remote add upstream https://github.com/mendhak/rhythmbox-tray-icon.git
+    # Oh-my-zsh
+    cd $CASTLE_DIR
+    cd home/.oh-my-zsh
+    git remote add upstream https://github.com/robbyrussell/oh-my-zsh.git
+    # Oh-my-zsh-powerline-theme
+    cd ../.oh-my-zsh-themes/powerline
+    git remote add upstream https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git
+    # Poweline-fonts
+    cd powerline-fonts
+    git remote add upstream https://github.com/Lokaltog/powerline-fonts.git
+    # spf13-vim
+    cd $CASTLE_DIR
+    cd home/.spf13-vim
+    git remote add upstream https://github.com/spf13/spf13-vim.git
+    # VIM-Bundle/Vundle
+    cd .vim/bundle/vundle/
+    git remote add upstream https://github.com/VundleVim/Vundle.vim.git
+    cd $CURR_PWD
+}
 
 # Updates all submodules in reference to each upstream
+homesick_pull_upstreams(){
+    CURR_PWD=`pwd`
+    CASTLE_DIR=`homesick show_path dotfiles`
+    cd $CASTLE_DIR
+    # DirColors
+    cd home/.dircolors
+    git pull --ff upstream master
+    # Rhythmbox Plugin
+    cd ../.local/share/rhythmbox/plugins
+    git pull --ff upstream master
+    # Oh-my-zsh
+    cd $CASTLE_DIR
+    cd home/.oh-my-zsh
+    git pull --ff upstream master
+    # Oh-my-zsh-powerline-theme
+    cd ../.oh-my-zsh-themes/powerline
+    git pull --ff upstream master
+    # Poweline-fonts
+    cd powerline-fonts
+    git pull --ff upstream master
+    # spf13-vim
+    cd $CASTLE_DIR
+    cd home/.spf13-vim
+    git pull --ff upstream 3.0
+    # VIM-Bundle/Vundle
+    cd .vim/bundle/vundle/
+    git pull --ff upstream master
+    cd $CURR_PWD
+}
