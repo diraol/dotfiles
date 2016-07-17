@@ -172,8 +172,7 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 bindsym $mod+c exec gsimplecal
 bindsym Mod1+Control+l exec i3lock -t -d
 
-# bindsym $mod+t scratchpad show
-bindsym Mod1+t scratchpad show
+bindsym $mod+t scratchpad show
 bindsym $mod+Shift+s sticky toggle
 
 # Window assignments
@@ -187,6 +186,7 @@ assign [class="xterm" title="irssi"] irc
 for_window [class="Gimp"] floating enable
 for_window [class="Thunderbird"] floating enable
 for_window [class="Telegram"] floating enable
+for_window [class="Telegram"] move scratchpad
 for_window [class="Rhythmbox"] floating enable
 for_window [title="Controle de Volume"] floating enable
 for_window [title="Volume Control"] floating enable
