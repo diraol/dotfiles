@@ -208,6 +208,12 @@ bindsym $mod+minus exec amixer set Master 5%-
 bindsym XF86MonBrightnessUp   exec xbacklight -inc 10 -time 0 -steps 1
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 0 -steps 1
 
+# === PrintScreen ===
+# scrot & gimp - root
+bindsym Print exec scrot -e 'mv $f ~/Imagens/'
+# scrot & gimp - select window or rectangle
+#bindsym Mod1+Print exec scrot -s -e 'mv $f ~/Imagens/'
+
 # Set background image
 exec --no-startup-id gnome-keyring-daemon -s
 exec --no-startup-id feh --bg-fill /home/diraol/Imagens/wallpaper.jpg
