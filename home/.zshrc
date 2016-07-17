@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(systemd debian colorize tmux git git-extras autopep8 github jsontools pep8 python pip virtualenvwrapper tmux zsh-navigation-tools npm)
+plugins=(systemd debian colorize tmux git git-extras autopep8 github jsontools pep8 python pip virtualenvwrapper tmux zsh-navigation-tools)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
