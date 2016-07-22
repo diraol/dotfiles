@@ -43,7 +43,6 @@ unlet g:airline_right_sep
 autocmd FileType javascript,python,php setlocal sw=4 ts=4 sts=4
 let python_highlight_all = 1
 
-
 let g:pymode_rope=0 " Don't need this right now.
 UnBundle 'spf13/vim-preview'
 
@@ -93,7 +92,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Disable spellcheck
 "set spell spelllang=en
-setlocal spell!
+"setlocal spell!
 set nospell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

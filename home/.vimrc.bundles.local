@@ -2,11 +2,11 @@
 "  twig (php framework)
 "  ruby
 "
-let g:spf13_bundle_groups=['general', 'programming', 'python', 'python3', 'misc']
+let g:spf13_bundle_groups=['general', 'programming', 'python3', 'misc']
 
-"Bundle 'othree/html5.vim'
 Bundle 'spf13/vim-autoclose'
 Bundle 'Chiel92/vim-autoformat'
-"Bundle 'coot/atp_vim' "Automatic-LaTeX-Plugin
-"Bundle 'nvie/vim-flake8'
 Bundle 'hdima/python-syntax'
+"Bundle 'nvie/vim-flake8'
+"Bundle 'othree/html5.vim'
+"Bundle 'coot/atp_vim' "Automatic-LaTeX-Plugin
