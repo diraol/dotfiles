@@ -210,8 +210,8 @@ bindsym $mod+plus exec amixer set Master 5%+
 bindsym $mod+minus exec amixer set Master 5%-
 
 # === Brightness ===
-bindsym XF86MonBrightnessUp   exec xbacklight -inc 10 -time 0 -steps 1
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 0 -steps 1
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 5 -time 0 -steps 1
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -time 0 -steps 1
 
 # === PrintScreen ===
 # scrot & gimp - root
