@@ -11,3 +11,4 @@ export EDITOR=vim
 # Sourcing other config files
 source ~/.diraol/aliases_ssh
 source ~/.diraol/aliases_general
+source ~/.diraol/radar

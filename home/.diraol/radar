@@ -1,0 +1,4 @@
+RADAR_DIR='$HOME/devel/radar'
+alias radarGoGo='cd $RADAR_DIR/radar_parlamentar; sudo service postgresql start; ./manage.py runserver'
+alias radarRun='cd $$RADAR_DIR/radar_parlamentar; ./manage.py runserver'
+alias radarDownload='cd $HOME/devel/; git clone git@github.com:radar-parlamentar/radar.git; git clone git@github.com:radar-parlamentar/implantacao.git radar_implantacao'
