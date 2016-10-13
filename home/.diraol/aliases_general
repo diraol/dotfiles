@@ -9,6 +9,9 @@ alias vim='vim -p'
 # Vim plugins update
 alias update_vimplugins="vim +BundleInstall +BundleClean +qall"
 
+# Shutdown on console with root password
+alias desligar='su -c"shutdown -h now"'
+
 # For lenovo x230t
 function reboot_wacom() {
     echo "Rebootando o Wacom device"
