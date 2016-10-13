@@ -219,10 +219,12 @@ bindsym Print exec scrot -e 'mv $f ~/Imagens/'
 # scrot & gimp - select window or rectangle
 #bindsym Mod1+Print exec scrot -s -e 'mv $f ~/Imagens/'
 
+# Gnome settings for gnome keyring
+# exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+# exec --no-startup-id gnome-keyring-daemon -s
+
 # Set background image
 exec --no-startup-id feh --bg-fill /home/diraol/Imagens/wallpaper.jpg
-
-#exec --no-startup-id gnome-keyring-daemon -s
 
 # For unesp-ncc computer
 exec --no-startup-id nm-applet
