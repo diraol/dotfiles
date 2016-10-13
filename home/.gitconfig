@@ -1,7 +1,9 @@
 [user]
   name = Diego Rabatone Oliveira
   email = diraol@diraol.eng.br
-	signingkey = 8E521D0F
+  signingkey = 8E521D0F
+[commit]
+  gpgsign = true
 [alias]
   co = checkout
   ci = commit
