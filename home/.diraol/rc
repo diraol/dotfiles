@@ -6,7 +6,7 @@ alias vimconfig="vim -p ~/.vimrc.local ~/.vimrc.bundles.local"
 
 # Other exports
 export DEFAULT_USER="diraol"
-export EDITOR=vim # Bitch, please.
+export EDITOR=vim
 
 # Sourcing other config files
 source ~/.diraol/aliases_ssh
