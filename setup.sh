@@ -47,10 +47,15 @@ echo "11 - Installing powerline"
 sudo pip install powerline-status
 sudo pip3 install powerline-status
 
-echo "12 - Installing powerline"
+echo "12 - Installing virtualenv tools"
 # Installing virtualenv requirements
 sudo pip install virtualenv virtualenvwrapper
 sudo pip3 install virtualenv virtualenvwrapper
 
 echo "13 - Installing vim plugins with Bundle/Vundle"
 vim +BundleInstall +BundleClean +qall
+
+echo "14 - Creating user context java directories"
+mkdir -p ~/.java/.systemPrefs
+mkdir ~/.java/.userPrefs
+chmod -R 755 ~/.java
