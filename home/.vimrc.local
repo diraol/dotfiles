@@ -95,9 +95,12 @@ map <leader>pp :setlocal paste!<cr>
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Disable spellcheck
-"set spell spelllang=en
-"setlocal spell!
-set nospell
+" setlocal spell!
+" set nospell
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+set spell
+set spelllang=en_gb,pt
+" let g:grammarous#use_vim_spelllang = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
