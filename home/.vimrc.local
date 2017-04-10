@@ -38,10 +38,13 @@ let g:airline_powerline_fonts=1
 unlet g:airline_left_sep
 unlet g:airline_right_sep
 
+" Decrease indenting for javascript, css and html
+autocmd FileType javascript setlocal sw=2 ts=2 sts=2
+
 " Python features
 
-" Increase indenting for javascript and python
-autocmd FileType javascript,python,php setlocal sw=4 ts=4 sts=4
+" Increase indenting for python and php
+autocmd FileType python,php setlocal sw=4 ts=4 sts=4
 let python_highlight_all = 1
 
 let g:pymode_rope=0 " Don't need this right now.
