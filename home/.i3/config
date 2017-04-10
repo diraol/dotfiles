@@ -179,14 +179,18 @@ bindsym Mod1+Control+l exec i3lock -t -d
 
 bindsym $mod+t scratchpad show
 bindsym $mod+Shift+s sticky toggle
+bindsym $mod+Shift+t move scratchpad
+bindsym Mod1+Shift+t [instance="Telegram"] scratchpad show
+#bindsym Mod1+Shift+s [instance="slack"] scratchpad show
+bindsym Mod1+Shift+k [instance="keepass2"] scratchpad show
 
 # Window assignments
 # assign [class="Thunderbird"] 7
 # assign [class="Telegram"] 8
 assign [class="Rhythmbox"] = 9
 assign [title="irc"] irc
-assign [class="Xterm" title="irssi"] irc
-assign [class="xterm" title="irssi"] irc
+assign [title="irssi"] irc
+assign [title="main_term"] 1
 
 for_window [class="Gimp"] floating enable
 for_window [class="Thunderbird"] floating enable
@@ -195,6 +199,16 @@ for_window [class="Telegram"] move scratchpad
 for_window [class="Rhythmbox"] floating enable
 for_window [title="Controle de Volume"] floating enable
 for_window [title="Volume Control"] floating enable
+for_window [class="pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="pavucontrol" title="Volume Control"] floating enable
+for_window [class="pavucontrol" title="Controle de Volume"] floating enable
+for_window [instance="Telegram"] floating enable
+for_window [instance="Telegram"] move scratchpad
+for_window [instance="slack"] floating enable
+for_window [instance="slack"] move scratchpad
+for_window [instance="keepass2"] floating enable
+for_window [instance="keepass2"] move scratchpad
 
 # For Lenovo X230tablet (and others)
 # === Audio ===
@@ -215,7 +229,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -time 0 -steps 1
 
 # === PrintScreen ===
 # scrot & gimp - root
-bindsym Print exec scrot -e 'mv $f ~/Imagens/'
+bindsym Print exec scrot -e 'mv $f ~/Imagens/ss/'
 # scrot & gimp - select window or rectangle
 #bindsym Mod1+Print exec scrot -s -e 'mv $f ~/Imagens/'
 
@@ -225,13 +239,13 @@ bindsym Print exec scrot -e 'mv $f ~/Imagens/'
 
 # Set background image
 exec --no-startup-id feh --bg-fill /home/diraol/Imagens/wallpaper.jpg
+# exec --no-startup-id feh --randomize --bg-fill ~/Pictures/*
 
 # For unesp-ncc computer
 exec --no-startup-id nm-applet
-exec "xterm -title irc -e tmux new-session -s irc -d 'irssi'\; attach"
-exec 'Telegram'
-exec --no-startup-id 'i3-sensible-terminal'
-# exec --no-startup-id i3-msg 'workspace 2; exec chromium; workspace 3'
-# exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 1'
-# exec --no-startup-id i3-msg 'workspace 1; exec terminator'
-# exec --no-startup-id feh --randomize --bg-fill ~/Pictures/*
+exec --no-startup-id Telegram -name Telegram
+#exec --no-startup-id slack
+exec --no-startup-id keepass2
+exec --no-startup-id terminator -T irc -x tmux -2 new-session -s irc -d irssi\; attach
+exec --no-startup-id terminator -T main_term
+exec --no-startup-id owncloud
