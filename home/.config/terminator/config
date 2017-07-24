@@ -17,19 +17,29 @@
 [plugins]
 [profiles]
   [[default]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    #palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    palette = "#1d1f21:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#c5c8c6:#969896:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#ffffff"
+    cursor_color = "#c5c8c6"
+    foreground_color = "#c5c8c6"
+    background_color = "#1d1f21"
+    font = Inconsolata for Powerline Medium 10
     background_image = None
-    background_darkness = 0.83
     use_system_font = False
-    cursor_color = "#eee8d5"
-    foreground_color = "#eee8d5"
     icon_bell = False
     show_titlebar = False
-    font = Inconsolata Medium 10
-    background_color = "#002b36"
-    # background_color = "#00322c"
+    scrollbar_position = hidden
+  [[ncc-default]]
+    background_color = "#a0a0a0"
+    palette = "#303030:#d370a3:#6d9e3f:#b58858:#6095c5:#ac7bde:#3ba275:#cfcfcf:#686868:#ffa7da:#a3d572:#efbd8b:#98cbfe:#e5b0ff:#75daa9:#ffffff"
+    foreground_color = "#a0a0a0"
+    font = Inconsolata for Powerline Medium 10
+    background_image = None
+    use_system_font = False
+    icon_bell = False
+    show_titlebar = False
+    login_shell = True
+    scrollbar_position = hidden
   [[solarized-dark]]
+    scrollbar_position = hidden
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     background_image = None
     background_darkness = 0.83
@@ -41,6 +51,7 @@
     font = Inconsolata Medium 10
     background_color = "#002b36"
   [[solarized-light]]
+    scrollbar_position = hidden
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     background_image = None
     background_darkness = 0.83
@@ -51,3 +62,47 @@
     show_titlebar = False
     font = Inconsolata Medium 10
     background_color = "#eee8d5"
+  [[navy-and-ivory]]
+    scrollbar_position = hidden
+    palette = "#032c36:#c2454e:#7cbf9e:#8a7a63:#2e3340:#ff5879:#44b5b1:#f2f1b9:#065f73:#ef5847:#a2d9b1:#beb090:#61778d:#ff99a1:#9ed9d8:#f6f6c9"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#e8dfd6"
+    foreground_color = "#e8dfd6"
+    icon_bell = False
+    show_titlebar = False
+    font = Inconsolata Medium 10
+    background_color = "#021b21"
+  [[tomorrow-dark]]
+    palette = "#1d1f21:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#c5c8c6:#969896:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#ffffff"
+    cursor_color = "#c5c8c6"
+    foreground_color = "#c5c8c6"
+    background_color = "#1d1f21"
+    icon_bell = False
+    show_titlebar = False
+    background_image = None
+    scrollbar_position = hidden
+    use_system_font = False
+    font = Inconsolata Medium 10
+  [[terminal-sexy-dark]]
+    scrollbar_position = hidden
+    palette = "#666666:#cc6699:#99cc66:#cc9966:#6699cc:#9966cc:#66cc99:#cccccc:#999999:#ff99cc:#ccff99:#ffcc99:#99ccff:#cc99ff:#99ffcc:#ffffff"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#cccccc"
+    foreground_color = "#cccccc"
+    icon_bell = False
+    show_titlebar = False
+    font = Inconsolata Medium 10
+    background_color = "#333333"
+  [[monokai-dark]]
+    scrollbar_position = hidden
+    palette = "#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f8f8f2:#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f9f8f5"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#f8f8f2"
+    foreground_color = "#f8f8f2"
+    icon_bell = False
+    show_titlebar = False
+    font = Inconsolata Medium 10
+    background_color = "#272822"
