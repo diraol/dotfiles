@@ -1,0 +1,6 @@
+# Init rbenv - focused on CHEF ENV
+function enable_chef_env(){
+    echo 'Initing rbenv for CHEF'
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+}
