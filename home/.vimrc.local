@@ -53,12 +53,23 @@ UnBundle 'spf13/vim-preview'
 " Setting some helpfull key-bindings for tabbing
 "'Mapping ctrl+pgup and ctrl+pgdwn to change tabs inside vim
 "" tab navigation like firefox
-nnoremap <C-PageUp> :tabprevious<CR>
-nnoremap <C-PageDown> :tabnext<CR>
-nnoremap <C-t> :tabnew<CR>
-inoremap <C-PageUp> <Esc>:tabprevious<CR>i
-inoremap <C-PageDown> <Esc>:tabstopnext<CR>i
-inoremap <C-t> <Esc>:tabnew<CR>
+nnoremap <C-PageUp>   :bprevious<CR>
+nnoremap <C-PageDown> :bnext<CR>
+nnoremap <C-t>        :enew<CR>
+inoremap <C-PageUp>   <Esc>:bprevious<CR>i
+inoremap <C-PageDown> <Esc>:bnext<CR>i
+inoremap <C-t>        <Esc>:enew<CR>i
+
+" https://github.com/christoomey/vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+nnoremap <silent> <S-Left>  :TmuxNavigateLeft<cr>
+nnoremap <silent> <S-Down>  :TmuxNavigateDown<cr>
+nnoremap <silent> <S-Up>    :TmuxNavigateUp<cr>
+nnoremap <silent> <S-Right> :TmuxNavigateRight<cr>
+nnoremap <silent> <S-\\>    :TmuxNavigatePrevious<cr>
 
 " Fast saving
 nmap <leader>w :w!<cr>
