@@ -25,24 +25,41 @@ set t_ut=
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:indent_guides_enable_on_vim_startup = 0 " disable visible guides at indent points
-let g:autoclose_vim_commentmode=1       " don't autoclose quotes in vim files
-let g:pymode_lint_checker="pep8, pylint, pyflakes, pep257"
-let g:pymode_lint_on_write=0
+let g:autoclose_vim_commentmode = 1 " don't autoclose quotes in vim files
+"let g:pymode_lint_checker="pep8, pylint, pyflakes, pep257"
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint', 'pep257']
+let g:pymode_lint_on_write = 0
+let g:syntastic_python_python_exec = '/usr/bin/env python3'
+" Override run current python file key shortcut to Ctrl-Shift-e
+let g:pymode_run_bind = "<C-<F7>>"
+" Override view python doc key shortcut to Ctrl-Shift-d
+let g:pymode_doc_bind = "<C-S-d>"
 
-let g:airline_powerline_fonts=1
+" Override python folding regex to add new async/await python syntax
+let g:pymode_folding_regex = '^\s*\%(class\|def\|async\) \w\+'
+
+" Enable Python syntax highlight
+let python_highlight_all = 1
+let g:pymode_rope=0 " Don't need this right now.
+
+" Airline plugin configs
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 unlet g:airline_left_sep
 unlet g:airline_right_sep
 
-" Decrease indenting for javascript, css and html
+" Indenting
+" Decrease indenting for javascript, html, css, scss and sass
 autocmd FileType javascript setlocal sw=2 ts=2 sts=2
-
-" Python features
-
+autocmd FileType html       setlocal sw=2 ts=2 sts=2
+autocmd FileType css        setlocal sw=2 ts=2 sts=2
+autocmd FileType scss       setlocal sw=2 ts=2 sts=2
+autocmd FileType sass       setlocal sw=2 ts=2 sts=2
 " Increase indenting for python and php
-autocmd FileType python,php setlocal sw=4 ts=4 sts=4
-let python_highlight_all = 1
+autocmd FileType python     setlocal sw=4 ts=4 sts=4
+autocmd FileType php        setlocal sw=4 ts=4 sts=4
 
-let g:pymode_rope=0 " Don't need this right now.
 UnBundle 'spf13/vim-preview'
 
 " Setting some helpfull key-bindings for tabbing
@@ -100,11 +117,8 @@ map <leader>pp :setlocal paste!<cr>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" Disable spellcheck
-" setlocal spell!
-" set nospell
 let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
-set spell
+"set spell
 set spelllang=en_gb,pt
 " let g:grammarous#use_vim_spelllang = 1
 
