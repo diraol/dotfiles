@@ -13,3 +13,6 @@
 [submodule "home/.local/share/rhythmbox/plugins"]
 	path = home/.local/share/rhythmbox/plugins
 	url = git@github.com:diraol/rhythmbox-tray-icon.git
+[submodule "home/.oh-my-zsh-themes/powerlevel9k"]
+	path = home/.oh-my-zsh-themes/powerlevel9k
+	url = git@github.com:diraol/powerlevel9k.git
