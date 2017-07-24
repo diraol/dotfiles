@@ -18,3 +18,8 @@ function reboot_wacom() {
     echo "Insira a senha de root do sistema"
     su - -c 'rmmod wacom; modprobe wacom'
 }
+
+# Force TMUX to support 256 color terminal
+alias tmux="tmux -2"
+# Smart alias to search for aliases based on regex
+alias sa='alias | grep -i'
