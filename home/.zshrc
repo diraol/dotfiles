@@ -12,16 +12,30 @@ ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 # ZSH_THEME='bureau'
-ZSH_THEME="powerline"
 
-# Powerline theme options.
-POWERLINE_HIDE_USER_NAME="true"
-POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_NO_BLANK_LINE="true"
-POWERLINE_SHOW_GIT_ON_RIGHT="true"
-POWERLINE_PATH="short"
-POWERLINE_CUSTOM_CURRENT_PATH="%3~"
-POWERLINE_DETECT_SSH="true"
+# # Powerline theme options.
+# POWERLINE_HIDE_USER_NAME="true"
+# POWERLINE_HIDE_HOST_NAME="true"
+# POWERLINE_NO_BLANK_LINE="true"
+# POWERLINE_SHOW_GIT_ON_RIGHT="true"
+# POWERLINE_PATH="short"
+# POWERLINE_CUSTOM_CURRENT_PATH="%3~"
+# POWERLINE_DETECT_SSH="true"
+# ZSH_THEME="powerline"
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs virtualenv time)
+
+# Remove it?
+POWERLEVEL9K_MODE='awesome-fontconfig'
+
+# POWERLEVEL9K_MODE='awesome-fontconfig'
+ZSH_THEME="powerlevel9k"
+
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -105,4 +119,5 @@ export DISABLE_AUTO_TITLE='true'
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
+source ~/.fonts/*.sh
 source ~/.diraol/rc
