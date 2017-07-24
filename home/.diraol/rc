@@ -15,3 +15,5 @@ source $HOME/.diraol/aliases_general
 source $HOME/.diraol/homesick_submodules_upstreams
 source $HOME/.diraol/ssh
 source $HOME/.diraol/radar
+
+export JAVA_OPTS="-Djava.util.prefs.systemRoot=/home/diraol/.java -Djava.util.prefs.userRoot=/home/diraol/.java/.userPrefs"
