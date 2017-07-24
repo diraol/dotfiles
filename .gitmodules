@@ -16,3 +16,6 @@
 [submodule "home/.oh-my-zsh-themes/powerlevel9k"]
 	path = home/.oh-my-zsh-themes/powerlevel9k
 	url = git@github.com:diraol/powerlevel9k.git
+[submodule "home/.fonts/awesome-terminal-fonts"]
+	path = home/.fonts/awesome-terminal-fonts
+	url = https://github.com/gabrielelana/awesome-terminal-fonts.git
