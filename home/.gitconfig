@@ -4,6 +4,8 @@
   signingkey = 8E521D0F
 [commit]
   gpgsign = true
+[format]
+  signOff = false
 [alias]
   co = checkout
   ci = commit
@@ -41,9 +43,10 @@
   denyNonFastForwards = true
 [branch]
   autosetuprebase = always
-[cola]
-  fontdiff = Inconsolata,11,-1,5,50,0,0,0,0,0
-[gui]
-  editor = gedit
 [status]
   submoduleSummary = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
