@@ -10,6 +10,8 @@ export EDITOR=vim
 export GITHUB_USER='diraol'
 
 # Sourcing other config files
-source ~/.diraol/aliases_ssh
-source ~/.diraol/aliases_general
-source ~/.diraol/radar
+source $HOME/.diraol/contexts
+source $HOME/.diraol/aliases_general
+source $HOME/.diraol/homesick_submodules_upstreams
+source $HOME/.diraol/ssh
+source $HOME/.diraol/radar
