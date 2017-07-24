@@ -1,3 +1,7 @@
+
+export TERM=xterm-256color
+[ -n "$TMUX" ] && export TERM=screen-256color
+
 # Path to your oh-my-zsh installation directory.
 ZSH=$HOME/.oh-my-zsh
 
