@@ -19,3 +19,6 @@
 [submodule "home/.fonts/awesome-terminal-fonts"]
 	path = home/.fonts/awesome-terminal-fonts
 	url = https://github.com/gabrielelana/awesome-terminal-fonts.git
+[submodule "home/.awesome-terminal-fonts"]
+	path = home/.awesome-terminal-fonts
+	url = https://github.com/gabrielelana/awesome-terminal-fonts.git
