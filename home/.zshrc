@@ -119,5 +119,5 @@ export DISABLE_AUTO_TITLE='true'
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
-source ~/.fonts/awesome-terminal-fonts/build/*.sh
+source ~/.fonts/*.sh
 source ~/.diraol/rc
