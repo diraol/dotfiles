@@ -1,3 +1,5 @@
+UnBundle 'spf13/vim-preview'
+
 set term=xterm-256color
 set wrap                      " visually wrap lines
 set smartindent               " smart indenting
@@ -26,25 +28,13 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:indent_guides_enable_on_vim_startup = 0 " disable visible guides at indent points
 let g:autoclose_vim_commentmode = 1 " don't autoclose quotes in vim files
-"let g:pymode_lint_checker="pep8, pylint, pyflakes, pep257"
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint', 'pep257']
-let g:pymode_lint_on_write = 0
-let g:syntastic_python_python_exec = '/usr/bin/env python3'
-" Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-<F7>>"
-" Override view python doc key shortcut to Ctrl-Shift-d
-let g:pymode_doc_bind = "<C-S-d>"
-
-" Override python folding regex to add new async/await python syntax
-let g:pymode_folding_regex = '^\s*\%(class\|def\|async\) \w\+'
-
-" Enable Python syntax highlight
-let python_highlight_all = 1
-let g:pymode_rope=0 " Don't need this right now.
 
 " Airline plugin configs
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#tab_nr_type = 2
+let g:airline#extensions#tabline#show_tab_nr = 1
 
 unlet g:airline_left_sep
 unlet g:airline_right_sep
@@ -56,21 +46,30 @@ autocmd FileType html       setlocal sw=2 ts=2 sts=2
 autocmd FileType css        setlocal sw=2 ts=2 sts=2
 autocmd FileType scss       setlocal sw=2 ts=2 sts=2
 autocmd FileType sass       setlocal sw=2 ts=2 sts=2
-" Increase indenting for python and php
-autocmd FileType python     setlocal sw=4 ts=4 sts=4
 autocmd FileType php        setlocal sw=4 ts=4 sts=4
-
-UnBundle 'spf13/vim-preview'
 
 " Setting some helpfull key-bindings for tabbing
 "'Mapping ctrl+pgup and ctrl+pgdwn to change tabs inside vim
 "" tab navigation like firefox
-nnoremap <C-PageUp>   :bprevious<CR>
+nnoremap <C-PageUp> :bprevious<CR>
 nnoremap <C-PageDown> :bnext<CR>
-nnoremap <C-t>        :enew<CR>
-inoremap <C-PageUp>   <Esc>:bprevious<CR>i
+nnoremap <C-t> :enew<CR>
+inoremap <C-PageUp> <Esc>:bprevious<CR>i
 inoremap <C-PageDown> <Esc>:bnext<CR>i
-inoremap <C-t>        <Esc>:enew<CR>i
+inoremap <C-t> <Esc>:enew<CR>i
+
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :b10<CR>
 
 " https://github.com/christoomey/vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
@@ -122,6 +121,14 @@ let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 set spelllang=en_gb,pt
 " let g:grammarous#use_vim_spelllang = 1
 
+" syntastic configs
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -148,3 +155,8 @@ function! VisualSelection(direction, extra_filter) range
   let @/ = l:pattern
   let @" = l:saved_reg
 endfunction
+
+" Python configs
+if filereadable(expand("~/.vimrc.python"))
+    source ~/.vimrc.python
+endif
