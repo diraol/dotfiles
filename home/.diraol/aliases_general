@@ -28,3 +28,21 @@ function reboot_wacom() {
 alias tmux="tmux -2"
 # Smart alias to search for aliases based on regex
 alias sa='alias | grep -i'
+
+alias bb_create="warsaw-browser-create bbpj"
+alias bb="warsaw-browser-rerun bbpj"
+
+function warsaw-browser-create {
+    xhost +;
+    docker run -it --shm-size=2g \
+               -v /tmp/.X11-unix:/tmp/.X11-unix \
+               -v $HOME/Downloads/BankFiles:/home/bank/Downloads \
+               -e DISPLAY=unix$DISPLAY \
+               --name warsaw-browser \
+               lichti/warsaw-browser $1;
+}
+
+function warsaw-browser-rerun {
+    xhost +;
+    docker start warsaw-browser $1;
+}
