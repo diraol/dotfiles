@@ -16,7 +16,12 @@ alias desligar='su -c"shutdown -h now"'
 function reboot_wacom() {
     echo "Rebootando o Wacom device"
     echo "Insira a senha de root do sistema"
-    su - -c 'rmmod wacom; modprobe wacom'
+    if ! type "sudo" > /dev/null; then
+        su - -c 'rmmod wacom; modprobe wacom'
+    else
+        sudo rmmod wacom
+        sudo modprobe wacom
+    fi
 }
 
 # Force TMUX to support 256 color terminal
