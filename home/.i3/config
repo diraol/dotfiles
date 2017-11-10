@@ -187,7 +187,7 @@ bindsym Mod1+Shift+k [instance="keepass2"] scratchpad show
 # Window assignments
 # assign [class="Thunderbird"] 7
 # assign [class="Telegram"] 8
-assign [class="Rhythmbox"] = 9
+assign [class="Rhythmbox"] 9
 assign [title="irc"] irc
 assign [title="irssi"] irc
 assign [title="main_term"] 1
@@ -223,9 +223,21 @@ bindsym XF86AudioMicMute      exec --no-startup-id pactl set-source-mute 1 toggl
 bindsym $mod+plus exec amixer set Master 5%+
 bindsym $mod+minus exec amixer set Master 5%-
 
+
 # === Brightness ===
-bindsym XF86MonBrightnessUp   exec xbacklight -inc 5 -time 0 -steps 1
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -time 0 -steps 1
+# Adjust brightness with light.
+# Ref: https://cialu.net/brightness-control-not-work-i3wm/
+#   cd ~/tools
+#   git clone https://github.com/haikarainen/light.git
+#   cd light
+#   sudo make
+#   sudo make install
+# bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'" # increase screen brightness with notification
+# bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'" # decrease screen brightness with notification
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+# bindsym XF86MonBrightnessUp   exec xbacklight -inc 5 -time 0 -steps 1
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -time 0 -steps 1
 
 # === PrintScreen ===
 # scrot & gimp - root
