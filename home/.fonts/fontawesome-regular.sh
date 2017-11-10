@@ -1,1 +1,1 @@
-.awesome-terminal-fonts/build/fontawesome-regular.sh
+../.awesome-terminal-fonts/build/fontawesome-regular.sh

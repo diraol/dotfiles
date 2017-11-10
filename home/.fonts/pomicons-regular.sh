@@ -1,1 +1,1 @@
-.awesome-terminal-fonts/build/pomicons-regular.sh
+../.awesome-terminal-fonts/build/pomicons-regular.sh

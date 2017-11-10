@@ -1,1 +1,1 @@
-.awesome-terminal-fonts/build/devicons-regular.sh
+../.awesome-terminal-fonts/build/devicons-regular.sh

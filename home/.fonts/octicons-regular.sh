@@ -1,1 +1,1 @@
-.awesome-terminal-fonts/build/octicons-regular.sh
+../.awesome-terminal-fonts/build/octicons-regular.sh
