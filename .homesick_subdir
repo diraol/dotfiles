@@ -5,3 +5,4 @@
 .homesick/repos/dotfiles/home/.local/share/rhythmbox
 .gnupg
 .config/fontconfig/conf.d
+.screenlayouts
