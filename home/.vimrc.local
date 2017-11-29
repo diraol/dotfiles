@@ -47,6 +47,7 @@ autocmd FileType css        setlocal sw=2 ts=2 sts=2
 autocmd FileType scss       setlocal sw=2 ts=2 sts=2
 autocmd FileType sass       setlocal sw=2 ts=2 sts=2
 autocmd FileType php        setlocal sw=4 ts=4 sts=4
+autocmd FileType vue        syntax sync fromstart
 
 " Setting some helpfull key-bindings for tabbing
 "'Mapping ctrl+pgup and ctrl+pgdwn to change tabs inside vim
