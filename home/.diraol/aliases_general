@@ -3,6 +3,9 @@ alias sizesort='du -a -h --max-depth=1 | sort -hr'
 # vim shortcut
 alias vim='vim -p'
 
+# APT with IPV4 forced
+alias apt4='sudo apt -o Acquire::ForceIPv4=true'
+
 # Android dev
 # export PATH=/home/diraol/tools/android-sdk-linux/tools:/home/diraol/tools/android-sdk-linux/platform-tools:$PATH
 
