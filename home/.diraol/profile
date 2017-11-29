@@ -25,6 +25,10 @@ if [ -d "$HOME/tools/bin" ] ; then
     PATH="$HOME/tools/bin:$PATH"
 fi
 
+if [ -d "$HOME/.screenlayout" ] ; then
+    PATH="$HOME/.screenlayout:$PATH"
+fi
+
 if [ "$0" = "/usr/sbin/gdm3" -a "$DESKTOP_SESSION" = "i3"  ]; then
     export $(gnome-keyring-daemon -s)
 fi
