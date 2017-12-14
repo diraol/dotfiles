@@ -6,7 +6,7 @@ fi
 
 # sox is for 'play' command to be used with irssi irc client
 echo "01 - Installing basic packages (ruby, git, vim, irc, rdoc, tmux, pip)"
-sudo aptitude install -y ruby rdoc irb git vim python-pip python-pip3 tmux exuberant-ctags sox feh irssi keepass2 chromium zsh
+sudo aptitude install -y ruby rdoc irb git vim-nox python-pip python-pip3 tmux exuberant-ctags sox feh irssi keepass2 chromium zsh
 
 echo "02 - Changin default shell to zsh"
 chsh -s $(which zsh) $USER
