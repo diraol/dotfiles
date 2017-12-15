@@ -1,0 +1,11 @@
+*~
+.~lock.*
+.*.swp
+.sass-cache/
+.DS_Store
+.netrwhist
+.idea
+.RData
+.Rhistory
+node_modules/
+doc/tags

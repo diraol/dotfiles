@@ -1,0 +1,20 @@
+"Disabled groups
+"  twig (php framework)
+"  ruby
+"
+let g:spf13_bundle_groups=['general', 'programming', 'python3', 'misc']
+
+Bundle 'derekwyatt/vim-scala'
+
+Bundle 'spf13/vim-autoclose'
+Bundle 'Chiel92/vim-autoformat'
+Bundle 'hdima/python-syntax'
+" Vim theme
+Bundle 'morhetz/gruvbox'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'tmux-plugins/vim-tmux-focus-events'
+Bundle 'posva/vim-vue'
+"Bundle 'othree/html5.vim'
+"Bundle 'coot/atp_vim'
+"Bundle 'nvie/vim-flake8'
+" Bundle 'drichard/vim-brunch'
