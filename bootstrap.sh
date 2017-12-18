@@ -7,6 +7,11 @@ mkdir -p $HOME/sandbox
 mkdir -p $HOME/.fonts
 
 #########################################################################
+# apt installs
+#########################################################################
+sudo apt install vim-nox gsimplecal
+
+#########################################################################
 # Clone prezto.
 #########################################################################
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
