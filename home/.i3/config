@@ -206,6 +206,9 @@ bindsym XF86AudioMicMute      exec --no-startup-id pactl set-source-mute 1 toggl
 bindsym $mod+plus exec amixer set Master 5%+
 bindsym $mod+minus exec amixer set Master 5%-
 
+# Calendar
+bindsym $mod+g exec gsimplecal
+
 # === Brightness ===
 # Adjust brightness with light.
 # Ref: https://cialu.net/brightness-control-not-work-i3wm/
