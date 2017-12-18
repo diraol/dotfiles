@@ -2,19 +2,10 @@
 "  twig (php framework)
 "  ruby
 "
-let g:spf13_bundle_groups=['general', 'programming', 'python3', 'misc']
-
-Bundle 'derekwyatt/vim-scala'
-
-Bundle 'spf13/vim-autoclose'
-Bundle 'Chiel92/vim-autoformat'
-Bundle 'hdima/python-syntax'
+Plugin 'spf13/vim-autoclose'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'hdima/python-syntax'
 " Vim theme
-Bundle 'morhetz/gruvbox'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'tmux-plugins/vim-tmux-focus-events'
-Bundle 'posva/vim-vue'
-"Bundle 'othree/html5.vim'
-"Bundle 'coot/atp_vim'
-"Bundle 'nvie/vim-flake8'
-" Bundle 'drichard/vim-brunch'
+Plugin 'morhetz/gruvbox'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tmux-plugins/vim-tmux-focus-events'

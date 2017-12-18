@@ -38,17 +38,14 @@ let g:pymode_run_bind = "<C-<F7>>"
 " Override view python doc key shortcut to Ctrl-Shift-d
 let g:pymode_doc_bind = "<C-S-d>"
 
-" Override python folding regex to add new async/await python syntax
-let g:pymode_folding_regex = '^\s*\%(class\|def\|async\) \w\+'
-
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
 
-unlet g:airline_left_sep
-unlet g:airline_right_sep
+" unlet g:airline_left_sep
+" unlet g:airline_right_sep
 
 " Increase indenting for javascript and python
 autocmd FileType python,php setlocal sw=4 ts=4 sts=4 expandtab
@@ -57,7 +54,6 @@ autocmd FileType javascript,html,css setlocal sw=2 ts=2 sts=2 expandtab
 " Enable Python syntax highlight
 let python_highlight_all = 1
 let g:pymode_rope=0 " Don't need this right now.
-UnBundle 'spf13/vim-preview'
 
 " Setting some helpfull key-bindings for tabbing
 "'Mapping ctrl+pgup and ctrl+pgdwn to change tabs inside vim
@@ -138,13 +134,19 @@ autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype css setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype vue setlocal ts=2 sw=2 sts=2 expandtab
 
-" Deoplete Plugin
-let g:deoplete#enable_at_startup = 1
+" Deoplete Plugin - not using it for now
+" let g:deoplete#enable_at_startup = 1
 
 " ctrlp
-set wildignore+=*/tmp/*,*.so,*.swp
-set wildignore+=*.vimswap/*,*.vimbackup/*,*.vimundo/*,*.vimviews/*,*.viminfo/*
-set wildignore+=*/target/*
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|vimviews|vimbackup|vimundo|viminfo)$',
+  \ 'file': '\v\.(exe|so|dll|sw)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" Nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
