@@ -92,6 +92,22 @@ cp $HOME/.homesick/repos/dotfiles/spell/pt.utf-8.spl $HOME/.vim/spell/
 #########################################################################
 git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers
 
+#########################################################################
+# Python env setup
+#########################################################################
+# deps: 
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev
+# pyenv (using virtualenvwrapper)
+bash <(curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer)
+# Loading env variables to keep installation
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# pyenv-virtualenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+# pyenv-virtualenvwrapper
+git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+
 # ########################################################################
 # Enable ssh-agent service
 #########################################################################
