@@ -296,12 +296,13 @@ client.urgent           $red $red $white $red $red
 exec --no-startup-id feh --randomize --bg-fill ~/Imagens/*
 
 # For unesp-ncc computer
+exec --no-startup-id "gnome-keyring-daemon -d"
 exec --no-startup-id nm-applet
 exec --no-startup-id Telegram -name Telegram
 exec --no-startup-id mattermost-desktop
 exec --no-startup-id owncloud
 exec --no-startup-id keepass2
 exec --no-startup-id i3-sensible-terminal
-exec --no-startup-id firefox https://web.pontotel.com.br/
-exec --no-startup-id "gnome-keyring-daemon -d" 
+exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
+exec --no-startup-id i3-msg 'window 2; firefox -P easy https://web.pontotel.com.br; workspace 0'
 # exec --no-startup-id "eval `ssh-agent -s -t 6000`"
