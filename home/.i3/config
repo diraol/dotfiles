@@ -92,16 +92,28 @@ bindsym Mod5+Shift+minus move scratchpad
 bindsym Mod5+minus scratchpad show
 # bindsym $mod+t scratchpad show
 
-# Enter scratchpad mode
-bindsym Mod5+s mode "$scratchpad"
+# Enter scratchpad mode - overwrite default sticky toggle bind (line 107).
+bindsym $mods+s mode "$scratchpad"
 
 mode "$scratchpad" {
+  # audio
+  bindsym a [class="Pavucontrol"] scratchpad show
+  # calendar
+  bindsym c [class="Gnome-calendar"] scratchpad show
+  # keepass
   bindsym k [instance="keepass2"] scratchpad show
-  bindsym v [class="pavucontrol"] scratchpad show
-} 
 
-bindsym $mods+s sticky toggle
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
 bindsym Mod1+Shift+k [instance="keepass2"] scratchpad show
+bindsym $mods+c [class="Gnome-calendar"] scratchpad show
+
+# Sticky mode for floating windows. The sticked window stay visible on all 
+# workspaces.
+# bindsym $mods+s sticky toggle
 
 # SettingUp monitors
 # workspace 7 HDMI1
@@ -137,7 +149,7 @@ bindsym $mods+9 move container to workspace 9
 bindsym $mods+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mods+c reload
+# bindsym $mods+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mods+r restart
 # exit i3 (logs you out of your X session)
@@ -169,12 +181,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+c exec gsimplecal
 bindsym Mod1+Control+l exec i3lock -t -d
 
 # Window assignments
 assign [class="Rhythmbox"] 9
 assign [title="main_term"] 1
+assign [instance="Telegram"] cal
 assign [class="(?i)mattermost" instance="(?i)mattermost"] m
 assign [instance="Telegram"] t
 
@@ -184,14 +196,18 @@ for_window [class="Thunderbird"] floating enable
 for_window [class="Rhythmbox"] floating enable
 for_window [title="Controle de Volume"] floating enable
 for_window [title="Volume Control"] floating enable
-for_window [class="pavucontrol"] floating enable
-# for_window [instance="Telegram"] floating enable
+for_window [class="Pavucontrol"] floating enable
 for_window [instance="keepass2"] floating enable
+for_window [class="Gnome-calendar"] floating enable
+# for_window [instance="Telegram"] floating enable
 
 # Moving some floating windows to scratchpad
-for_window [class="pavucontrol"] move scratchpad
-# for_window [instance="Telegram"] move scratchpad
+for_window [class="Pavucontrol"] move scratchpad
 for_window [instance="keepass2"] move scratchpad
+for_window [class="Gnome-calendar"] move scratchpad
+# for_window [instance="Telegram"] move scratchpad
+
+bindsym $mod+c exec gsimplecal
 
 # For Lenovo X230tablet (and others)
 # === Audio ===
@@ -205,9 +221,6 @@ bindsym XF86AudioMute         exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute      exec --no-startup-id pactl set-source-mute 1 toggle
 bindsym $mod+plus exec amixer set Master 5%+
 bindsym $mod+minus exec amixer set Master 5%-
-
-# Calendar
-bindsym $mod+g exec gsimplecal
 
 # === Brightness ===
 # Adjust brightness with light.
@@ -299,9 +312,11 @@ exec --no-startup-id feh --randomize --bg-fill ~/Imagens/*
 exec --no-startup-id "gnome-keyring-daemon -d"
 exec --no-startup-id nm-applet
 exec --no-startup-id Telegram -name Telegram
+exec --no-startup-id gnome-calendar
 exec --no-startup-id mattermost-desktop
 exec --no-startup-id owncloud
 exec --no-startup-id keepass2
+exec --no-startup-id pavucontrol
 exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
 exec --no-startup-id i3-msg 'window 2; firefox -P easy https://web.pontotel.com.br; workspace 0'
