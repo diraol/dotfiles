@@ -109,7 +109,7 @@ mode "$scratchpad" {
 }
 
 bindsym Mod1+Shift+k [instance="keepass2"] scratchpad show
-bindsym $mods+c [class="Gnome-calendar"] scratchpad show
+bindsym Mod1+Shift+c [class="Gnome-calendar"] scratchpad show
 
 # Sticky mode for floating windows. The sticked window stay visible on all 
 # workspaces.
