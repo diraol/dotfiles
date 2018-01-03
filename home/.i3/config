@@ -186,7 +186,6 @@ bindsym Mod1+Control+l exec i3lock -t -d
 # Window assignments
 assign [class="Rhythmbox"] 9
 assign [title="main_term"] 1
-assign [instance="Telegram"] cal
 assign [class="(?i)mattermost" instance="(?i)mattermost"] m
 assign [instance="Telegram"] t
 
