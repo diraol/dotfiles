@@ -232,6 +232,8 @@ bindsym $mod+minus exec amixer set Master 5%-
 #   sudo make install
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+bindsym $mods+plus exec light -A 5 # increase screen brightness
+bindsym $mods+minus exec light -U 5 # decrease screen brightness
 
 # === PrintScreen ===
 # scrot & gimp - root
