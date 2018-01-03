@@ -1,3 +1,4 @@
 .config/fontconfig/conf.d
 .config/systemd/user
 .local/share
+.sbt/0.13/plugins

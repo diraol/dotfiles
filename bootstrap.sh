@@ -112,3 +112,12 @@ git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plu
 # Enable ssh-agent service
 #########################################################################
 systemctl --user enable ssh-agent.service
+
+# ############################################################################
+# Setup scala/sbt
+##############################################################################
+sudo apt install scala
+echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+sudo apt update
+sudo apt install sbt
