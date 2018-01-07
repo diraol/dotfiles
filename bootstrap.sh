@@ -20,6 +20,7 @@ cd $ZPREZTODIR
 git pull
 git submodule update --init --recursive
 # Set zsh as default shell
+echo "Type your user password to alter your default shell to zsh"
 chsh -s /bin/zsh
 
 #########################################################################
@@ -37,7 +38,7 @@ cd $SRCDIR
 for F in `find build -maxdepth 1 -type f -printf "%f\n"`; do
   ln -s "build/$F" "$HOME/.fonts/$F"
 done
-fc-cache -fv $HOME/
+fc-cache -fv $HOME/.fonts
 for F in `ls build/*.sh`; do
   sh $F
 done
