@@ -131,8 +131,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-# mattermost workspace
-bindsym $mod+m workspace m
 # telegram workspace
 bindsym $mod+t workspace t
 
@@ -186,7 +184,6 @@ bindsym Mod1+Control+l exec i3lock -t -d
 # Window assignments
 assign [class="Rhythmbox"] 9
 assign [title="main_term"] 1
-assign [class="(?i)mattermost" instance="(?i)mattermost"] m
 assign [instance="Telegram"] t
 
 # Setting floating windows
@@ -314,11 +311,8 @@ exec --no-startup-id "gnome-keyring-daemon -d"
 exec --no-startup-id nm-applet
 exec --no-startup-id Telegram -name Telegram
 exec --no-startup-id gnome-calendar
-exec --no-startup-id mattermost-desktop
 exec --no-startup-id owncloud
 exec --no-startup-id keepassxc
 exec --no-startup-id pavucontrol
 exec --no-startup-id i3-sensible-terminal
-exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
-exec --no-startup-id i3-msg 'window 2; firefox -P easy https://web.pontotel.com.br; workspace 0'
-# exec --no-startup-id "eval `ssh-agent -s -t 6000`"
+exec --no-startup-id i3-msg 'window 0; exec firefox -P Diego\ Rabatone; workspace 1'
