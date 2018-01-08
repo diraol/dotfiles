@@ -6,12 +6,12 @@ export DEFAULT_USER="diraol"
 export GITHUB_USER="diraol"
 export EDITOR=vim # Bitch, please.
 
-if [ -d "$HOME/tools/bin" ] ; then
+if [ -d "$HOME/tools/bin" ]; then
   PATH="$HOME/tools/bin:$PATH"
 fi
 
-if [ -d "$HOME/.screenlayout" ] ; then
-    PATH="$HOME/.screenlayout:$PATH"
+if [ -d "$HOME/.screenlayout" ]; then
+  PATH="$HOME/.screenlayout:$PATH"
 fi
 
 # Config for exporting SSH_AUTH_SOCK
@@ -24,5 +24,8 @@ export SSH_AUTH_SOCK
 for F in ~/.diraol/_*; do
   source "$F"
 done
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+
+if [ -d "$HOME/.rbenv/bin" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi

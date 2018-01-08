@@ -1,0 +1,8 @@
+# VARIABLES
+export SVABATONEROOTV6='2804:14c:137:a20e'
+export SVABATONEPIV6='$SVABATONEROOTV6:9743:deb1:a8a8:49f8'
+export RUSSELHOMEV6='$SVABATONEROOTV6:6e88:14ff:fe1b:5e78'
+
+# ALIASES
+alias homepi='ssh diraol@$SVABATONEPIV6'
+alias homerussel='ssh diraol@$RUSSELHOMEV6'

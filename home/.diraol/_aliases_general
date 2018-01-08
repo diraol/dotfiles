@@ -4,10 +4,43 @@ alias sizesort='du -a -h --max-depth=1 | sort -hr'
 # vim shortcuts
 alias vim='vim -p'
 alias vim_config="vim -p ~/.vimrc.local ~/.vimrc.bundles.local"
-alias vim_update_plugins="vim +BundleInstall +BundleClean +qall" # Vim plugins update
+alias vim_update_plugins="vim +PluginInstall +PluginUpdate +PluginClean +qall" # Vim plugins update
 
 # Force TMUX to support 256 color terminal
 alias tmux="tmux -2"
 
+# APT with IPV4 forced
+alias apt4='sudo apt -o Acquire::ForceIPv4=true'
+
 # Smart alias to search for aliases based on regex
 alias sa='alias | grep -i'
+
+# For lenovo x230t
+function reboot_wacom() {
+  echo "Rebootando o Wacom device"
+  echo "Insira a senha de root ou de sudo do sistema"
+  if ! type "sudo" > /dev/null; then
+    su - -c 'rmmod wacom; modprobe wacom'
+  else
+    sudo rmmod wacom
+    sudo rmprobe wacom
+  fi
+}
+
+alias bb_create="warsaw-browser-create bbpj"
+alias bb="warsaw-browser-rerun bbpj"
+
+function warsaw-browser-create {
+  xhost +;
+  docker run -it --shm-size=2g \
+             -v /tmp/.X11-unix:/tmp/.X11-unix \
+             -v $HOME/Downloads/BankFiles:/home/bank/Downloads \
+             -e DISPLAY=unix$DISPLAY \
+             --name warsaw-browser \
+             lichti/warsaw-browser $1;
+}
+
+function warsaw-browser-rerun {
+  xhost +;
+  docker start warsaw-browser $1;
+}
