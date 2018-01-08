@@ -101,14 +101,14 @@ mode "$scratchpad" {
   # calendar
   bindsym c [class="Gnome-calendar"] scratchpad show
   # keepass
-  bindsym k [instance="keepass2"] scratchpad show
+  bindsym k [instance="keepassxc"] scratchpad show
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
 
-bindsym Mod1+Shift+k [instance="keepass2"] scratchpad show
+bindsym Mod1+Shift+k [instance="keepassxc"] scratchpad show
 bindsym Mod1+Shift+c [class="Gnome-calendar"] scratchpad show
 
 # Sticky mode for floating windows. The sticked window stay visible on all 
@@ -196,13 +196,13 @@ for_window [class="Rhythmbox"] floating enable
 for_window [title="Controle de Volume"] floating enable
 for_window [title="Volume Control"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [instance="keepass2"] floating enable
+for_window [instance="keepassxc"] floating enable
 for_window [class="Gnome-calendar"] floating enable
 # for_window [instance="Telegram"] floating enable
 
 # Moving some floating windows to scratchpad
 for_window [class="Pavucontrol"] move scratchpad
-for_window [instance="keepass2"] move scratchpad
+for_window [instance="keepassxc"] move scratchpad
 for_window [class="Gnome-calendar"] move scratchpad
 # for_window [instance="Telegram"] move scratchpad
 
@@ -316,7 +316,7 @@ exec --no-startup-id Telegram -name Telegram
 exec --no-startup-id gnome-calendar
 exec --no-startup-id mattermost-desktop
 exec --no-startup-id owncloud
-exec --no-startup-id keepass2
+exec --no-startup-id keepassxc
 exec --no-startup-id pavucontrol
 exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
