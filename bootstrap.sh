@@ -9,7 +9,8 @@ mkdir -p $HOME/.fonts
 #########################################################################
 # apt installs
 #########################################################################
-sudo apt install vim-nox gsimplecal
+sudo apt install vim-nox gsimplecal cmake -y
+# cmake is for YouCompletedMe vim plugin
 
 #########################################################################
 # Clone prezto.
@@ -81,14 +82,6 @@ pip3 install pylint
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 #########################################################################
-# VIM setup - my spf13 fork
-#########################################################################
-sh <(curl https://raw.githubusercontent.com/diraol/spf13-vim/3.0/bootstrap.sh -L)
-# Vim pt_br spell
-mkdir -p $HOME/.vim/spell
-cp $HOME/.homesick/repos/dotfiles/spell/pt.utf-8.spl $HOME/.vim/spell/
-
-#########################################################################
 # i3status helpers
 #########################################################################
 git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers
@@ -96,8 +89,10 @@ git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-help
 #########################################################################
 # Python env setup
 #########################################################################
-# deps: 
+LATEST_PYTHON="3.6.3"
+# deps:
 sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 # pyenv (using virtualenvwrapper)
 bash <(curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer)
 # Loading env variables to keep installation
@@ -108,6 +103,38 @@ eval "$(pyenv virtualenv-init -)"
 git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 # pyenv-virtualenvwrapper
 git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+pyenv install $LATEST_PYTHON
+pyenv global $LATEST_PYTHON
+
+#########################################################################
+# VIM setup - my spf13 fork
+#########################################################################
+if [ -d $HOME/.spf13-vim ]; then
+    mv $HOME/.spf13-vim $HOME/.spf13-vim-bkp
+fi
+git clone https://github.com/diraol/spf13-vim $HOME/.spf13-vim
+cd $HOME/.spf13-vim
+git submodule update --init --recursive
+SRCDIR=$HOME/.spf13-vim
+rm -rf $HOME/.vim $HOME/.vimrc $HOME/.vimrc.before $HOME/.vimrc.bundles
+ln -s $SRCDIR/.vim $HOME/.vim
+ln -s $SRCDIR/.vimrc $HOME/.vimrc
+ln -s $SRCDIR/.vimrc.before $HOME/.vimrc.before
+ln -s $SRCDIR/.vimrc.bundles $HOME/.vimrc.bundles
+
+# Vim pt_br spell
+mkdir -p $HOME/.vim/spell
+cp $HOME/.homesick/repos/dotfiles/vimspell/pt.utf-8.spl $HOME/.vim/spell/
+
+local system_shell="$SHELL"
+export SHELL='/bin/sh'
+vim -u "$SRCDIR/.vimrc.bundles.default" \
+    "+set nomore" \
+    "+PluginInstall!" \
+    "+PluginClean" \
+    "+qall"
+export SHELL="$system_shell"
+$HOME/.vim/bundle/YouCompleteMe/install.py
 
 # ########################################################################
 # Enable ssh-agent service
