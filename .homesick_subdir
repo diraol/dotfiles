@@ -2,3 +2,5 @@
 .config/systemd/user
 .local/share
 .sbt/1.0/plugins
+.gnupg
+.fonts
