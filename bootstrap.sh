@@ -15,7 +15,9 @@ sudo apt install vim-nox gsimplecal cmake -y
 #########################################################################
 # Clone prezto.
 #########################################################################
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+if [ !-d "$HOME/.zpresto" ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+fi
 # Updating prezto and submodules
 cd $ZPREZTODIR
 git pull
@@ -27,17 +29,23 @@ chsh -s /bin/zsh
 #########################################################################
 # Clone prezto-contrib
 #########################################################################
-git clone --recursive https://github.com/belak/prezto-contrib.git "$HOME/.zprezto-contrib"
+if [ !-d "$HOME/.zprezto-contrib" ]
+  git clone --recursive https://github.com/belak/prezto-contrib.git "$HOME/.zprezto-contrib"
+fi
 
 #########################################################################
 # Install awesome-terminal-fonts
 # Ref: https://github.com/gabrielelana/awesome-terminal-fonts.git
 #########################################################################
 SRCDIR=$HOME/tools/awesome-terminal-fonts
-git clone --depth 1 https://github.com/gabrielelana/awesome-terminal-fonts.git $SRCDIR 
+if [ !-d $SRCDIR ]; then
+  git clone --depth 1 https://github.com/gabrielelana/awesome-terminal-fonts.git $SRCDIR
+fi
 cd $SRCDIR
 for F in `find build -maxdepth 1 -type f -printf "%f\n"`; do
-  ln -s "build/$F" "$HOME/.fonts/$F"
+  if [ !-f "$HOME/.fonts/$F" ]; then
+    ln -s "build/$F" "$HOME/.fonts/$F"
+  fi
 done
 fc-cache -fv $HOME/.fonts
 for F in `ls build/*.sh`; do
@@ -65,8 +73,10 @@ dconf load /org/gnome/terminal/ < $HOME/.homesick/repos/dotfiles/gnome_terminal_
 # Ref: https://github.com/powerline/fonts
 #########################################################################
 SRCDIR=$HOME/sandbox/powerline-fonts
-git clone https://github.com/powerline/fonts.git --depth=1 $SRCDIR 
-cd $SRCDIR 
+if [ !-d $SRCDIR ]; then
+  git clone https://github.com/powerline/fonts.git --depth=1 $SRCDIR
+fi
+cd $SRCDIR
 sh install.sh
 rm -rf $SRCDIR
 
@@ -79,12 +89,17 @@ pip3 install pylint
 #########################################################################
 # Tmux plugin manager 
 #########################################################################
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+if [ -d $HOME/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+fi
 
 #########################################################################
 # i3status helpers
 #########################################################################
-git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers
+mkdir -p $HOME/.i3
+if [ !-d $HOME/.i3/status-helpers ]; then
+  git clone https://github.com/mikereinhold/i3status-helpers.git $HOME/.i3/status-helpers
+fi
 
 #########################################################################
 # Python env setup
@@ -94,25 +109,30 @@ LATEST_PYTHON="3.6.3"
 sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 # pyenv (using virtualenvwrapper)
-bash <(curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer)
+if [ !-d $HOME/.pyenv ]; then
+  bash <(curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer)
+fi
 # Loading env variables to keep installation
-export PATH="~/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 # pyenv-virtualenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+if [ !-d $(pyenv root)/plugins/pyenv-virtualenv ];  then
+  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+fi
 # pyenv-virtualenvwrapper
-git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+if [ !-d $(pyenv root)/plugins/pyenv-virtualenvwrapper ];  then
+  git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+fi
 pyenv install $LATEST_PYTHON
 pyenv global $LATEST_PYTHON
 
 #########################################################################
 # VIM setup - my spf13 fork
 #########################################################################
-if [ -d $HOME/.spf13-vim ]; then
-    mv $HOME/.spf13-vim $HOME/.spf13-vim-bkp
+if [ !-d $HOME/.spf13-vim ]; then
+  git clone https://github.com/diraol/spf13-vim $HOME/.spf13-vim
 fi
-git clone https://github.com/diraol/spf13-vim $HOME/.spf13-vim
 cd $HOME/.spf13-vim
 git submodule update --init --recursive
 SRCDIR=$HOME/.spf13-vim
