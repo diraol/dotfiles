@@ -15,8 +15,8 @@ fi
 # Configuring powerlevel9k theme
 # Powerlevel9k font
 POWERLEVEL9K_MODE='awesome-fontconfig'
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-# POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_unique"
 # Powerlevel9k left and right segments
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
