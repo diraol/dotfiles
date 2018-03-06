@@ -28,15 +28,16 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:indent_guides_enable_on_vim_startup = 0 " disable visible guides at indent points
 let g:autoclose_vim_commentmode=1       " don't autoclose quotes in vim files
 " let g:pymode_lint_checker="pep8,pylint" " pep8, then pylint. no pyflakes.
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint', 'pep257']
-let g:pymode_lint_on_write = 0
+let g:pymode_lint_checkers = ['pydocstyle', 'pycodestyle', 'pylint', 'pyflakes', 'mccabe']
+let g:pymode_lint_on_write = 1
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:pymode_virtualenv = 1
 " Override run current python file key shortcut to Ctrl-Shift-e
 let g:pymode_run_bind = "<C-<F7>>"
-
 " Override view python doc key shortcut to Ctrl-Shift-d
 let g:pymode_doc_bind = "<C-S-d>"
+let g:pymode_folding = 0
+let g:pymode_lint_cwindow = 1
 
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
