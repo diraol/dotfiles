@@ -116,6 +116,16 @@ bindsym Mod1+Shift+c [class="Gnome-calendar"] scratchpad show
 # bindsym $mods+s sticky toggle
 
 # SettingUp monitors
+workspace 1 output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output DP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+workspace 10 output eDP-1
+workspace p output eDP-1
+workspace t output eDP-1
+workspace m output eDP-1
 # workspace 7 HDMI1
 # workspace 8 HDMI1
 # workspace 9 HDMI1
@@ -131,6 +141,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+# personal firefox workspace
+bindsym $mod+p workspace p
 # mattermost workspace
 bindsym $mod+m workspace m
 # telegram workspace
@@ -188,6 +200,7 @@ assign [class="Rhythmbox"] 9
 assign [title="main_term"] 1
 assign [class="(?i)mattermost" instance="(?i)mattermost"] m
 assign [instance="Telegram"] t
+assign [class="PersonalFirefox"] p
 
 # Setting floating windows
 for_window [class="Gimp"] floating enable
@@ -307,12 +320,13 @@ client.urgent           $red $red $white $red $red
 # ==== STARTUPS ====
 # ##################
 # Set background image
-exec --no-startup-id feh --randomize --bg-fill ~/Imagens/*
+exec --no-startup-id feh --randomize --bg-fill ~/Imagens/wallpaper/*
 
 # For unesp-ncc computer
 exec --no-startup-id "gnome-keyring-daemon -d"
 exec --no-startup-id nm-applet
 exec --no-startup-id Telegram -name Telegram
+exec --no-startup-id personal
 exec --no-startup-id gnome-calendar
 exec --no-startup-id mattermost-desktop
 exec --no-startup-id owncloud
@@ -320,5 +334,5 @@ exec --no-startup-id keepassxc
 exec --no-startup-id pavucontrol
 exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
-exec --no-startup-id i3-msg 'window 2; firefox -P easy https://web.pontotel.com.br; workspace 0'
+exec --no-startup-id i3-msg 'window 2; firefox -P easy; workspace 0'
 # exec --no-startup-id "eval `ssh-agent -s -t 6000`"
