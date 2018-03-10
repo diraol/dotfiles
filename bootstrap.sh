@@ -9,7 +9,7 @@ mkdir -p $HOME/.fonts
 #########################################################################
 # apt installs
 #########################################################################
-sudo apt install vim-nox gsimplecal -y
+sudo apt install vim-nox gsimplecal fonts-font-awesome -y
 
 #########################################################################
 # Clone prezto.
