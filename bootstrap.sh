@@ -9,8 +9,7 @@ mkdir -p $HOME/.fonts
 #########################################################################
 # apt installs
 #########################################################################
-sudo apt install vim-nox gsimplecal cmake -y
-# cmake is for YouCompletedMe vim plugin
+sudo apt install vim-nox gsimplecal -y
 
 #########################################################################
 # Clone prezto.
@@ -154,7 +153,6 @@ vim -u "$SRCDIR/.vimrc.bundles.default" \
     "+PluginClean" \
     "+qall"
 export SHELL="$system_shell"
-$HOME/.vim/bundle/YouCompleteMe/install.py
 
 # ########################################################################
 # Enable ssh-agent service
