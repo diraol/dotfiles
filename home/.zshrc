@@ -24,3 +24,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs virtualenv time)
 
 # Load my rc
 source "$HOME/.diraol/rc"
+
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
