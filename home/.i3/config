@@ -3,8 +3,10 @@
 
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-set $mod Mod4
-set $mods Mod4+Shift
+set $mod Mod1
+set $mods Mod1+Shift
+set $amod Mod4
+set $amods Mod4+Shift
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -108,8 +110,8 @@ mode "$scratchpad" {
   bindsym Escape mode "default"
 }
 
-bindsym Mod1+Shift+k [instance="keepassxc"] scratchpad show
-bindsym Mod1+Shift+c [class="Gnome-calendar"] scratchpad show
+bindsym $amods+k [instance="keepassxc"] scratchpad show
+bindsym $amod+Shift+c [class="Gnome-calendar"] scratchpad show
 
 # Sticky mode for floating windows. The sticked window stay visible on all 
 # workspaces.
@@ -193,7 +195,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym Mod1+Control+l exec i3lock -t -d
+bindsym $amod+Control+l exec i3lock -t -d
 
 # Window assignments
 assign [class="Rhythmbox"] 9
@@ -251,7 +253,7 @@ bindsym $mods+minus exec light -U 5 # decrease screen brightness
 # scrot & gimp - root
 bindsym Print exec scrot -e 'mv $f ~/Imagens/ss/'
 # scrot & gimp - select window or rectangle
-#bindsym Mod1+Print exec scrot -s -e 'mv $f ~/Imagens/'
+#bindsym $amod+Print exec scrot -s -e 'mv $f ~/Imagens/'
 
 #######
 #THEME#
