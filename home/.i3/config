@@ -276,6 +276,7 @@ set $white #ebdbb2
 # finds out, if available)
 bar {
   position top
+  font pango:DejaVu Sans Mono, FontAwesome 8
   status_command i3status
 
   colors {
