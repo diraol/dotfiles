@@ -9,7 +9,7 @@ mkdir -p $HOME/.fonts
 #########################################################################
 # apt installs
 #########################################################################
-sudo apt install vim-nox gsimplecal fonts-font-awesome
+sudo apt install vim-nox gsimplecal
 
 #########################################################################
 # Clone prezto.
@@ -42,10 +42,16 @@ cd $SRCDIR
 for F in `find build -maxdepth 1 -type f -printf "%f\n"`; do
   ln -s "build/$F" "$HOME/.fonts/$F"
 done
+
 fc-cache -fv $HOME/.fonts
 for F in `ls build/*.sh`; do
   sh $F
 done
+
+cd ~/.tools
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip
+unzip -o Inconsolata.zip
+fc-cache -fv
 
 #########################################################################
 # Loading gnome-terminal DiRaOL Profile
