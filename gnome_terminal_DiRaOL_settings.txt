@@ -34,13 +34,13 @@ list=['c06e7709-3abb-43aa-afc8-999d09564246']
 default='c06e7709-3abb-43aa-afc8-999d09564246'
 
 [legacy/profiles:/:c06e7709-3abb-43aa-afc8-999d09564246]
-foreground-color='#ebebdbdbb2b2'
+foreground-color='#ebdbb2'
 visible-name='DiRaOL'
-palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#bdbdaeae9393', '#7c7c6f6f6464', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+palette=['#282828', '#cc241d', '#98971a', '#d79921', '#458588', '#b16286', '#689d6a', '#bdae93', '#7c6f64', '#fb4934', '#b8bb26', '#fabd2f', '#83a598', '#d3869b', '#8ec07c', '#ebdbb2']
 use-system-font=false
 use-theme-colors=false
 font='Inconsolata Nerd Font 10'
 bold-color-same-as-fg=false
-bold-color='#000000000000'
-background-color='#282828282828'
+bold-color='#36DDD6'
+background-color='#282828'
 audible-bell=false
