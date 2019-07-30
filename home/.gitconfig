@@ -30,6 +30,9 @@
   process = git-lfs filter-process
   required = true
 [remote]
-	pushdefault = origin
+  pushdefault = origin
 [branch "master"]
-	remote = upstream
+  remote = upstream
+[url "git@gitlab.otters.xyz:"]
+  username = diego.rabatone
+  insteadOf = https://gitlab.otters.xyz/
