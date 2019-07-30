@@ -69,7 +69,6 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -115,7 +114,7 @@ bindsym $amod+Shift+c [class="Gnome-calendar"] scratchpad show
 
 # Sticky mode for floating windows. The sticked window stay visible on all 
 # workspaces.
-# bindsym $mods+s sticky toggle
+bindsym $mod+s sticky toggle
 
 # SettingUp monitors
 workspace 1 output HDMI-1
