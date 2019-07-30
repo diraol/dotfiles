@@ -52,6 +52,12 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 " Increase indenting for javascript and python
 autocmd FileType python,php setlocal sw=4 ts=4 sts=4 expandtab
 autocmd FileType javascript,html,css setlocal sw=2 ts=2 sts=2 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype css setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype vue setlocal ts=2 sw=2 sts=2 expandtab
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable Python syntax highlight
 let python_highlight_all = 1
@@ -131,11 +137,6 @@ set spell spelllang=en_us,pt
 "setlocal spell!
 "set nospell
 
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype css setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype vue setlocal ts=2 sw=2 sts=2 expandtab
-
 " Deoplete Plugin - not using it for now
 " let g:deoplete#enable_at_startup = 1
 
@@ -151,7 +152,26 @@ let g:ctrlp_custom_ignore = {
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_commentstring='//%s'
+let g:terraform_fmt_on_save=1
+
+" Markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" Ansible
+let g:ansible_unindent_after_newline = 1
+let g:ansible_yamlKeyName = 'yamlKey'
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'd'
+let g:ansible_extra_keywords_highlight = 1
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
