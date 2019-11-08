@@ -28,6 +28,9 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs virtualenv time)
 # VCS_GIT_GITHUB_ICON=
 # VCS_GIT_GITLAB_ICON=
 
+# zsh/zpresto-contrib enhancd plugin
+ENHANCD_DOT_ARG="..."
+
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
