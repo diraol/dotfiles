@@ -46,7 +46,9 @@ zstyle ':prezto:load' pmodule \
   'dpkg' \
   'python' \
   'tmux-xpanes' \
-  'enhancd'
+  'enhancd' \
+  'kubernetes' \
+  'gcloud'
 
 #
 # Autosuggestions

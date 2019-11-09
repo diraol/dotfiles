@@ -1,0 +1,145 @@
+// vim:ft=json
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 26, // Waybar height
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        "custom/right-arrow-dark"
+    ],
+    "modules-center": [
+        "custom/left-arrow-dark",
+        "sway/window",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "clock#1",
+        "custom/right-arrow-dark",
+        "clock#2"
+    ],
+    "modules-right": [
+        "custom/left-arrow-dark",
+        "pulseaudio",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "backlight",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "network",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "cpu",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "memory",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "disk",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "battery",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "tray"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false
+    },
+    "sway/window": {
+        "tooltip": false,
+        "max-length": 60
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 5
+    },
+    "clock#1": {
+        "format": "{:%Y-%m-%d}",
+        "interval": "45",
+        "tooltip": false,
+        "on-click": "gsimplecal"
+    },
+    "clock#2": {
+        "format": "{:%H:%M}",
+        "interval": "45",
+        "tooltip": false,
+        "on-click": "gsimplecal"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}%"
+    },
+    "disk": {
+        "format": " {percentage_used} %",
+        "on-click": "nautilus"
+    },
+    "memory": {
+        "interval": 5,
+        "format": "Mem {}%"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{icon} {capacity}% ",
+        "format-warning": "{icon} {capacity}%",
+        "format-critical": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) {ipaddr} ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": " 睊",
+        "tooltip-format": "Interface: {ifname}\rIP:{ipaddr}/{cidr}\r"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "ﳌ {icon} {format_source}",
+        "format-muted": "🔇 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphones": "🎧",
+			"default": [
+                "🔈",
+                "🔉",
+                "🔊"
+			]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    // Custom modules
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-clock": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	}
+}

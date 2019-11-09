@@ -1,0 +1,9 @@
+Plug 'morhetz/gruvbox'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ryanoasis/vim-devicons'
+Plug 'b4b4r07/vim-hcl'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'pearofducks/ansible-vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }  }

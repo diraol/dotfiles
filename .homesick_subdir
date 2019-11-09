@@ -2,3 +2,12 @@
 .config/systemd/user
 .local/share
 .sbt/1.0/plugins
+.config/sway
+.config/sway/handlers
+.config/waybar
+.config/rofi
+.config/rofi/modi
+.config/wofi
+.config
+.ssh
+tools/nerd-fonts

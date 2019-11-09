@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Stopping all other running instances
+HANDLERS_IDS="$(pgrep '.*waybar.*popup.*')"
+for HID in ${HANDLERS_IDS}; do
+    if [[ -n "${HID}" && "${HID}" != "$$" ]]; then
+        kill -9 "${HID}"
+    fi
+done
+
+popup_handler() {
+  local event=$(swaymsg -t SUBSCRIBE "['window']");
+  if [[ $(jq .container.app_id <<< $event) == '"waybar"' && $(jq .change <<< $event) == '"new"' ]]; then
+    local vert=$(( $(jq .container.geometry.height <<< $event) / 2 + 20))
+    local horz=$(( $(jq .container.geometry.width <<< $event) / 2))
+    swaymsg move position cursor
+    swaymsg move down $vert px
+    swaymsg move left $horz px
+  fi
+}
+
+while popup_handler; do
+  sleep 0.1
+done

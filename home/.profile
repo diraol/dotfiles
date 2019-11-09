@@ -16,15 +16,4 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
-if [ -d "/usr/local/go/bin" ]; then
-    PATH="$PATH:/usr/local/go/bin"
-fi
-if [ -d "$HOME/tools/bin" ]; then
-    PATH="$HOME/tools/bin:$PATH"
-fi
-
 source "$HOME/.diraol/rc"

@@ -1,73 +1,57 @@
-### Variables
-# Logo key. Use Mod1 for Alt.
-set $mod Mod1
-set $mods Mod1+Shift
-set $amod Mod4
-set $amods Mod4+Shift
+################################################################################
+# Loading env vars
+# Or trying to...
+#  And we do want xwayland enable for "legacy" apps
+    exec systemctl --user import-environment PATH
+    exec source "${HOME}/.diraol/_initial_load"; systemctl --user start sway-session.target
+    xwayland enable
 
-# Home row direction keys, like vim
-# set $left h
-# set $down j
-# set $up k
-# set $right l
+################################################################################
+#  Variables
+#  Mod1 = for Alt.
+#  Mod4 = Logo key
+    set $mod Mod1
+    set $mods Mod1+Shift
+    set $amod Mod4
+    set $amods Mod4+Shift
 
-# Your preferred terminal emulator
-set $term x-terminal-emulator
-# Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
+################################################################################
+#  Your preferred terminal emulator
+    set $term x-terminal-emulator
 
-set $menu j4-dmenu-desktop [--dmenu="dmenu -i"] [--term="i3-sensible-terminal"]
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+################################################################################
+##  Your preferred application launcher
+#  Some other options:
+#  set $menu j4-dmenu-desktop --dmenu="dmenu -i" --term="i3-sensible-terminal"
+#  set $menu dmenu_path | dmenu | xargs swaymsg exec --
+#  set $menu j4-dmenu-desktop --dmenu="(cat ; (stest -flx $(echo ${PATH} | tr : ' ') | sort -u)) | bemenu -i" --term="i3-sensible-terminal"
+#  set $menu (cat ; (stest -flx $(echo ${PATH} | tr : ' ') | sort -u)) | bemenu -i | wofi --show drun -i | xargs swaymsg exec --
+#  set $menu wofi --show drun -i | xargs swaymsg exec --
+    set $menu wofi --show drun -i
 
-### Output configuration
-set $mode_display AUX SCREEN: (h) HOME (s) SOLO
-set $mon_main output eDP-1 enable mode 3840x2160@60Hz pos
-set $mon_lgwide output DP-2 enable mode 2560x1080@60Hz pos
-mode "$mode_display" {
-  bindsym h $mon_main 0 0 scale 2, $mon_lgwide 1920 0, output DP-1 disable, mode "default"
-  bindsym s $mon_main 0 0, output DP-1 disable, output DP-2 disable, mode "default"
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-
-}
-bindsym $mods+d mode "$mode_display"
-
-
+################################################################################
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
-         timeout 900 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+    exec swayidle -w \
+             timeout 600 'swaylock -f -c 000000' \
+             timeout 900 'swaymsg "output * dpms off"' \
+                  resume 'swaymsg "output * dpms on"' \
+             before-sleep 'swaylock -f -c 000000'
 
+    bindsym Ctrl+Alt+l exec swaylock -f -c 222222
+
+################################################################################
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-#TODO
+# TODO inputs
+    input type:keyboard xkb_layout us
+    input type:keyboard xkb_variant intl
+
+# hide mouse on inactivity
+    seat * hide_cursor 1000
 
 ### Key bindings
 #
@@ -94,6 +78,23 @@ exec swayidle -w \
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mods+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Multimedia
+bindsym --locked $mod+equal exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym --locked $mod+minus exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym --locked XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# Brightness controls
+bindsym --locked XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym --locked $mods+equal exec --no-startup-id brightnessctl set +10%
+bindsym --locked XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym --locked $mods+minus exec --no-startup-id brightnessctl set 10%-
+
 #
 # Moving around:
 #
@@ -118,46 +119,16 @@ exec swayidle -w \
     bindsym $mods+Down move down
     bindsym $mods+Up move up
     bindsym $mods+Right move right
-#
-# Workspaces:
-#
-    # Special workspaces shortcuts
-    set $wsm 
-    set $wst 
-    set $wsp p
-    set $wsd 
-    # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
-    bindsym $mod+m workspace $wsm
-    bindsym $mod+t workspace $wst
-    bindsym $mod+F1 workspace $wsp
-    bindsym $mod+F9 workspace $wsd
-    # Move focused container to workspace
-    bindsym $mods+1 move container to workspace 1
-    bindsym $mods+2 move container to workspace 2
-    bindsym $mods+3 move container to workspace 3
-    bindsym $mods+4 move container to workspace 4
-    bindsym $mods+5 move container to workspace 5
-    bindsym $mods+6 move container to workspace 6
-    bindsym $mods+7 move container to workspace 7
-    bindsym $mods+8 move container to workspace 8
-    bindsym $mods+9 move container to workspace 9
-    bindsym $mods+0 move container to workspace 10
-    bindsym $mods+m move container to workspace $wsm
-    bindsym $mods+t move container to workspace $wst
-    bindsym $mods+F1 move container to workspace $wsp
-    bindsym $mods+F9 move container to workspace $wsd
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+
+# Outputs/Monitors and workspaces positioning
+    include outputs
+    include workspaces
+
+    # Specific workspaces apps
+    assign [class="personalfox"] →  workspace $wsp
+    assign [class="[Tt]elegram.*"] →  workspace $wst
+    assign [class="[Ff]ranz"] →  workspace $wsm
+
 #
 # Layout stuff:
 #
@@ -187,6 +158,7 @@ exec swayidle -w \
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -200,45 +172,50 @@ exec swayidle -w \
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym Mod5+minus scratchpad show
 
+    mode "$scratchpad" {
+        # audio
+        bindsym a [app_id="pavucontrol"] scratchpad show
+        # calendar
+        bindsym c [app_id="gnome-calendar"] scratchpad show
+        # keepass
+        bindsym k [class="keepassxc"] scratchpad show
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
     # Enter scratchpad mode
     bindsym $mods+s mode "$scratchpad"
 
-#
-# Named Scratchpads
-#
-mode "$scratchpad" {
-  # audio
-  bindsym a [class="Pavucontrol"] scratchpad show
-  # calendar
-  bindsym c [class="Gnome-calendar"] scratchpad show
-  # keepass
-  #bindsym k [instance="keepassxc"] scratchpad show
+    # Volume control scratchpad
+    for_window [app_id="pavucontrol"] floating enable
+    #for_window [app_id="pavucontrol"] move scratchpad
 
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
+    # Keepass scratchpad
+    # for_window [class="keepassxc"] floating enable
+    # for_window [class="keepassxc"] move scratchpad
+    for_window [class="keepassxc"] floating enable
+    for_window [class="keepassxc"] move scratchpad
+    for_window [class="keepassxc"] scratchpad show
+    bindsym $amods+k [class="keepassxc"] scratchpad show
+
+    # # Gnome Calendar scratchpad
+    # for_window [app_id="gnome-calendar"] floating enable
+    # for_window [app_id="gnome-calendar"] move scratchpad
+    # bindsym $amods+c [app_id="gnome-calendar"] scratchpad show
+
+    # Gsimplecal
+    bindsym $mod+c exec gsimplecal
 
 #
 # Resizing containers:
 #
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    # bindsym $left resize shrink width 10px
-    # bindsym $down resize grow height 10px
-    # bindsym $up resize shrink height 10px
-    # bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
 
-    # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -261,49 +238,16 @@ set $white #ebdbb2
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    font pango:Inconsolata Nerd Font Mono, FontAwesome 10
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    status_command i3status
-
-  colors {
-    # bar background color
-    background $bg
-    # text color used for blocks that do not have a color specified.
-    statusline $yellow
-    # workspaces section
-    #                    border  backgr. text
-    focused_workspace    $aqua $aqua $darkgray
-    inactive_workspace   $darkgray $darkgray $yellow
-    active_workspace     $darkgray $darkgray $yellow
-    urgent_workspace     $red $red $bg
-  }
+    swaybar_command waybar
 }
 
-#start of window title bars & borders section
-
-# green gruvbox
-# class                 border|backgr|text|indicator|child_border
-#client.focused          $green $green $darkgray $purple $darkgray
-#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-#client.urgent           $red $red $white $red $red
-
-# blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $darkgray $purple $darkgray
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $red $red $white $red $red
+include theme
 
 #end of window title bars & borders section
 
-xwayland enable
-
-exec "systemctl --user import-environment; systemctl --user start sway-session.target"
-
 include /etc/sway/config.d/*
+
+include init
+
+# Start at workspace 1
+workspace 1
