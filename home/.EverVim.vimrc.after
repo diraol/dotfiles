@@ -38,4 +38,4 @@ function! MyConfigs()
         set mouse=
 endfunction
 
-" autocmd VimEnter * call MyConfigs()
+autocmd VimEnter * call MyConfigs()
