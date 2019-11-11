@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=PersonalFox
+Encoding=UTF-8
+Comment=Firefox Personal Profile
+#Exec=firefox -P personal --class personalfox
+Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P personal --name cabifox --class personalfox'
+StartupWMClass=personalfox
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/home/diraol/.local/share/icons/personalfox.png
+Categories=Internet;
+MimeType=application/x-iso9660-appimage;

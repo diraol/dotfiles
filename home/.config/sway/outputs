@@ -1,13 +1,9 @@
 ### Output configuration
-# TODO: Move this logic and improve it in monitor_setup shell script and then
-# use this modes to call the script with proper arguments.
 output eDP-1 scale 2
 set $mode_display AUX SCREEN: (h) HOME (s) SOLO
-set $mon_main output eDP-1 enable mode 3840x2160@60Hz pos
-set $mon_lgwide output DP-2 enable mode 2560x1080@60Hz pos
 mode "$mode_display" {
-  bindsym h $mon_main 0 0, $mon_lgwide 1920 0, output DP-1 disable, mode "default"
-  bindsym s $mon_main 0 0, output DP-1 disable, output DP-2 disable, mode "default"
+  bindsym h /home/diraol/.local/bin/monitor_setup "HOME"
+  bindsym s /home/diraol/.local/bin/monitor_setup "SOLO"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"

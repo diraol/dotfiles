@@ -27,6 +27,7 @@ window#waybar {
 
 #window,
 #workspaces,
+#mode,
 #disk,
 #pulseaudio,
 #backlight,
@@ -91,6 +92,7 @@ window#waybar {
 }
 
 #window,
+#mode,
 #clock,
 #pulseaudio,
 #backlight,

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=NoTrack
+Encoding=UTF-8
+Comment=Firefox NoTrack profile
+Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P notrack --no-remote --private-window https://duckduckgo.com --name NoTrack --class NoTrack'
+StartupWMClass=NoTrack
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/home/diraol/.local/share/icons/notrack.svg
+Categories=Internet;
+MimeType=application/x-iso9660-appimage;

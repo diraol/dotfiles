@@ -2,8 +2,8 @@
 # Loading env vars
 # Or trying to...
 #  And we do want xwayland enable for "legacy" apps
-    exec systemctl --user import-environment PATH
-    exec source "${HOME}/.diraol/_initial_load"; systemctl --user start sway-session.target
+    exec /home/diraol/.diraol/rc
+    #exec_always "source /home/diraol/.diraol/rc; systemctl --user start sway-session.target; systemctl --user import-environment PATH"
     xwayland enable
 
 ################################################################################
@@ -162,9 +162,6 @@ bindsym --locked $mods+minus exec --no-startup-id brightnessctl set 10%-
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
     bindsym Mod5+Shift+minus move scratchpad
 
@@ -192,17 +189,16 @@ bindsym --locked $mods+minus exec --no-startup-id brightnessctl set 10%-
     #for_window [app_id="pavucontrol"] move scratchpad
 
     # Keepass scratchpad
-    # for_window [class="keepassxc"] floating enable
-    # for_window [class="keepassxc"] move scratchpad
     for_window [class="keepassxc"] floating enable
     for_window [class="keepassxc"] move scratchpad
     for_window [class="keepassxc"] scratchpad show
     bindsym $amods+k [class="keepassxc"] scratchpad show
 
-    # # Gnome Calendar scratchpad
-    # for_window [app_id="gnome-calendar"] floating enable
-    # for_window [app_id="gnome-calendar"] move scratchpad
-    # bindsym $amods+c [app_id="gnome-calendar"] scratchpad show
+    # Firefox
+    for_window [title="Firefox - Sharing Indicator"] floating enable
+
+    # Bluetooth Manager
+    for_window [app_id="blueman-manager"] floating enable
 
     # Gsimplecal
     bindsym $mod+c exec gsimplecal

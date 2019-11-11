@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Personal vars exports
+export DEFAULT_USER="diraol"
+export GITHUB_USER="diraol"
+export EDITOR="vim" # Bitch, please.
+
+export GOPATH="${HOME}/.go"
+export NVM_DIR="${HOME}/.nvm"
+export MOZ_ENABLE_WAYLAND=1
+
+# Setting XDG_DATA_DIRS for rofi/dmenu .desktop apps 
+if [[ "${XDG_DATA_DIRS:-FALSE}" == "FALSE" ]]; then
+        export XDG_DATA_DIRS="/usr/share"
+fi
+while IFS= read -r DIR; do
+        if [[ -d "${DIR}" && ":${XDG_DATA_DIRS}:" != *":${DIR}:"* ]]; then
+                export XDG_DATA_DIRS="${DIR}:${XDG_DATA_DIRS}"
+        fi
+done < <( cat <<-EOF
+/usr/share
+/usr/local/share
+/var/lib/snapd/desktop
+${HOME}/.local/share
+${HOME}/.local/share/applications
+${HOME}/tools/.desktop
+EOF
+)
+
+# QT Variables for wayland/sway
+export QT_SCALE_FACTOR=1
+export QT_ACCESSIBILITY=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=0.5
+# Not all QT apps works with wayland, such as nextcloud/zoom,
+# So we can't use this as default yet.
+# export QT_QPA_PLATFORM="wayland"

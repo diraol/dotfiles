@@ -1,0 +1,76 @@
+#!/bin/bash
+# vim: ai:ts=8:sw=8:noet
+set -eufo pipefail
+export SHELLOPTS
+IFS=$'\t\n'
+
+# shellcheck source=/home/diraol/.diraol/rc
+# shellcheck disable=SC1091
+source "${HOME}/.diraol/rc"
+command -v jq > /dev/null 2>&1 || { echo "jq is not installed!"; exit 42; }
+
+# MONITOR/DISPLAY SPECS AND MODELS
+# Dell laptop screen
+DELL_ID="eDP-1"
+#DELL_MODEL="0x282B"
+DELL_XPS13_SPEC="mode 3840x2160@60Hz scale 2 pos 0 0"
+
+LG_ULTRAWIDE_MODEL="LG ULTRAWIDE"
+LG_ULTRAWIDE_SPEC="mode 2560x1080@60Hz scale 1"
+
+function single_display(){
+	# shellcheck disable=2086
+	swaymsg output ${DELL_ID} ${DELL_XPS13_SPEC} enable
+	swaymsg output DP-1 disable
+	swaymsg output DP-2 disable
+	swaymsg output DP-3 disable
+	exit 0
+}
+
+function dual_display(){
+	SECOND_DISPLAY="$(swaymsg -t get_outputs | jq -r '.[] | select(.name!="eDP-1") | .name')"
+	SECOND_DISPLAY_MODEL="$(swaymsg -t get_outputs | jq -r '.[] | select(.name!="eDP-1") | .model')"
+	
+	case ${SECOND_DISPLAY_MODEL} in
+		${LG_ULTRAWIDE_MODEL})
+			SPEC="${LG_ULTRAWIDE_SPEC}"
+			;;
+		*)
+			SPEC="mode 1920x1080@60Hz scale 1"
+			;;
+	esac
+	# shellcheck disable=2086
+	swaymsg output ${DELL_ID} ${DELL_XPS13_SPEC} enable
+	swaymsg output DP-1 disable
+	swaymsg output DP-2 disable
+	swaymsg output DP-3 disable
+	# shellcheck disable=2086
+	swaymsg output ${SECOND_DISPLAY} ${SPEC} pos 1920 0 enable
+	exit 0
+}
+
+ENVIRONMENT="${1:-auto}"
+case "${ENVIRONMENT}" in
+	"SOLO")
+		single_display
+		;;
+	"HOME")
+		dual_display
+		;;
+	*)
+esac
+
+N_DISPLAYS="$(swaymsg -t get_outputs | jq '. | length')"
+
+case "${N_DISPLAYS}" in
+	"1")
+		single_display
+		;;
+	"2")
+		dual_display
+		;;
+	*)
+		echo "Error in number of displays"
+		exit 42
+		;;
+esac

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=NextCloud
+Encoding=UTF-8
+Comment=Nextcloud AppImage
+Exec=/home/diraol/.local/bin/nextcloud
+StartupWMClass=Nextcloud
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/home/diraol/.local/share/icons/nextcloud.svg
+Categories=Internet;
+MimeType=application/x-iso9660-appimage;

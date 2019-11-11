@@ -6,7 +6,8 @@
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
-        "custom/right-arrow-dark"
+        "custom/right-arrow-dark",
+        "sway/mode"
     ],
     "modules-center": [
         "custom/left-arrow-dark",
@@ -49,6 +50,10 @@
     "sway/window": {
         "tooltip": false,
         "max-length": 60
+    },
+    "sway/mode": {
+        "format": " {}",
+        "max-length": 50
     },
     "tray": {
         // "icon-size": 21,

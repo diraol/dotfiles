@@ -1,6 +1,5 @@
 # Exec everytime the config is reloaded
-exec_always echo "${PATH}" > "${HOME}/path_test"
 exec_always /snap/bin/keepassxc
-exec_always "${HOME}/tools/bin/monitor_setup"
-exec_always "${HOME}/.config/sway/handlers/waybar_popup_positioner"
+exec_always "/home/diraol/.local/bin/monitor_setup"
+exec_always "/home/diraol/.config/sway/handlers/waybar_popup_positioner"
 exec /usr/bin/mako

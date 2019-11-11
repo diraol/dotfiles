@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# TODO: Check if we need to run this import or not
+systemctl --user import-environment PATH
+systemctl --user import-environment PATH GOROOT GOPATH SSH_AUTH_SOCK LANGUAGE LC_ALL LANG QT_SCALE_FACTOR XDG_DATA_DIRS XKB_DEFAULT_LAYOUT QT_ACCESSIBILITY QT_AUTOSCREEN_SCALE_FACTOR SHELL GOPRIVATE DIRAOL_RC_LOADED
+# systemctl --user import-environment
