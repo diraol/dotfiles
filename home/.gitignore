@@ -9,3 +9,7 @@
 .Rhistory
 node_modules/
 doc/tags
+.diraol/protected_data
+*.pem
+id_rsa
+id_rsa.pub
