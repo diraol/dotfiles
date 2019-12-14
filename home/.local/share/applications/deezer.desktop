@@ -2,8 +2,8 @@
 Name=Deezer
 Encoding=UTF-8
 Comment=Deezer Music
-Exec=firefox -P deezer --class Deezer
-StartupWMClass=Deezer
+Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P deezer --name deezer --class deezer'
+StartupWMClass=deezer
 StartupNotify=true
 Terminal=false
 Type=Application

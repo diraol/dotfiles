@@ -3,7 +3,7 @@ Name=PersonalFox
 Encoding=UTF-8
 Comment=Firefox Personal Profile
 #Exec=firefox -P personal --class personalfox
-Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P personal --name cabifox --class personalfox'
+Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P personal --name personalfox --class personalfox'
 StartupWMClass=personalfox
 StartupNotify=true
 Terminal=false

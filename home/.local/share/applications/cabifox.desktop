@@ -2,7 +2,6 @@
 Name=CabiFox
 Encoding=UTF-8
 Comment=Firefox Cabify Profile
-Exec=firefox -P cabify --class cabifox
 Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P cabify --name cabifox --class cabifox'
 StartupWMClass=cabifox
 StartupNotify=true
