@@ -1,7 +1,3 @@
-[user]
-  name = Diego Rabatone Oliveira
-  email = diego.rabatone@cabify.com
-  # signingkey = 8E521D0F
 [color]
   ui = auto
   branch = auto
@@ -33,6 +29,11 @@
   pushdefault = origin
 [branch "master"]
   remote = upstream
-[url "git@gitlab.otters.xyz:"]
-  username = diego.rabatone
-  insteadOf = https://gitlab.otters.xyz/
+[includeIf "gitdir:~/.homesick/"]
+  path = .diraol/gitconfig
+[includeIf "gitdir:~/devel/cabify/"]
+  path = .cabify/gitconfig
+[includeIf "gitdir:~/devel/easy/"]
+  path = .cabify/gitconfig
+[includeIf "gitdir:~/devel/personal/"]
+  path = .diraol/gitconfig
