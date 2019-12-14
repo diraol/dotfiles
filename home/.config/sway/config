@@ -122,7 +122,8 @@ bindsym --locked $mods+minus exec --no-startup-id brightnessctl set 10%-
     include workspaces
 
     # Specific workspaces apps
-    assign [class="personalfox"] →  workspace $wsp
+    assign [app_id="personalfox"] →  workspace $wsp
+    assign [app_id="deezer"] →  workspace $wsd
     assign [class="[Tt]elegram.*"] →  workspace $wst
     assign [class="[Ff]ranz"] →  workspace $wsm
 
