@@ -50,9 +50,6 @@
     input type:keyboard xkb_layout us
     input type:keyboard xkb_variant intl
 
-# hide mouse on inactivity
-    seat * hide_cursor 1000
-
 ### Key bindings
 #
 # Basics:
