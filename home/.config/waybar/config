@@ -20,10 +20,10 @@
     ],
     "modules-right": [
         "custom/left-arrow-dark",
-        "pulseaudio",
+        "idle_inhibitor",
         "custom/left-arrow-light",
         "custom/left-arrow-dark",
-        "backlight",
+        "pulseaudio",
         "custom/left-arrow-light",
         "custom/left-arrow-dark",
         "network",
@@ -101,12 +101,21 @@
         "format-wifi": "{essid} ({signalStrength}%) {ipaddr} ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": " 睊",
-        "tooltip-format": "Interface: {ifname}\rIP:{ipaddr}/{cidr}\r"
+        "tooltip": false,
+        "on-click": "swaymsg exec '$term -e nmtui-connect'"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": false
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "ﳌ {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {desc} | {format_source}",
+        "format-bluetooth-muted": "ﳌ {icon}  {desc} | {format_source}",
         "format-muted": "🔇 {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
