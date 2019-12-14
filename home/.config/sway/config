@@ -181,15 +181,21 @@ bindsym --locked $mods+minus exec --no-startup-id brightnessctl set 10%-
     # Enter scratchpad mode
     bindsym $mods+s mode "$scratchpad"
 
-    # Volume control scratchpad
+    # Volume control floating
     for_window [app_id="pavucontrol"] floating enable
-    #for_window [app_id="pavucontrol"] move scratchpad
+
+    # General Application Selection
+    for_window [title="Launch Application"] floating enable
+    # Zoom Chat floating
+    for_window [title="Zoom Group Chat"] floating enable
+    for_window [title="Zoom - Pro Account"] floating enable
+    for_window [instance="zoom" title="Settings"] floating enable
 
     # Keepass scratchpad
-    for_window [class="keepassxc"] floating enable
-    for_window [class="keepassxc"] move scratchpad
-    for_window [class="keepassxc"] scratchpad show
-    bindsym $amods+k [class="keepassxc"] scratchpad show
+    for_window [class="(?i)keepassxc"] floating enable
+    for_window [class="(?i)keepassxc"] move scratchpad
+    for_window [class="(?i)keepassxc"] scratchpad show
+    bindsym $amods+k [class="(?i)keepassxc"] scratchpad show
 
     # Firefox
     for_window [title="Firefox - Sharing Indicator"] floating enable
