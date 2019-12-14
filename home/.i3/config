@@ -100,8 +100,6 @@ bindsym $mods+s mode "$scratchpad"
 mode "$scratchpad" {
   # audio
   bindsym a [class="Pavucontrol"] scratchpad show
-  # calendar
-  bindsym c [class="Gnome-calendar"] scratchpad show
   # keepass
   bindsym k [instance="keepassxc"] scratchpad show
 
@@ -111,7 +109,6 @@ mode "$scratchpad" {
 }
 
 bindsym $amods+k [instance="keepassxc"] scratchpad show
-bindsym $amod+Shift+c [class="Gnome-calendar"] scratchpad show
 
 # Sticky mode for floating windows. The sticked window stay visible on all 
 # workspaces.
@@ -210,7 +207,6 @@ for_window [class="Rhythmbox"] floating enable
 for_window [title="Controle de Volume"] floating enable
 for_window [title="Volume Control"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Gnome-calendar"] floating enable
 for_window [title="D*KeePassXC$" instance="keepassxc"] floating enable
 for_window [title="KeePassXC-Browser*" instance="keepassxc"] floating enable
 for_window [class="arandr"] floating enable
@@ -221,7 +217,6 @@ for_window [class="Gnome-calculator"] floating enable
 
 # Moving some floating windows to scratchpad
 for_window [class="Pavucontrol"] move scratchpad
-for_window [class="Gnome-calendar"] move scratchpad
 for_window [title="D*KeePassXC$" instance="keepassxc"] move scratchpad
 # for_window [instance="Telegram"] move scratchpad
 
@@ -333,7 +328,6 @@ exec --no-startup-id feh --randomize --bg-fill ~/Imagens/wallpaper/*
 exec --no-startup-id "gnome-keyring-daemon -d"
 exec --no-startup-id nm-applet
 exec --no-startup-id telegram-desktop -name Telegram
-# exec --no-startup-id gnome-calendar
 exec --no-startup-id franz
 exec --no-startup-id nextcloud
 exec --no-startup-id keepassxc
