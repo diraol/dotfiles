@@ -10,7 +10,8 @@ set $amods Mod4+Shift
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:DejaVu Sans Mono 6
+#font pango:DejaVu Sans Mono 20
+font pango:Inconsolata Nerd Font Mono 10
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -205,7 +206,6 @@ assign [class="PersonalFirefox"] p
 
 # Setting floating windows
 for_window [class="Gimp"] floating enable
-for_window [class="Thunderbird"] floating enable
 for_window [class="Rhythmbox"] floating enable
 for_window [title="Controle de Volume"] floating enable
 for_window [title="Volume Control"] floating enable
@@ -280,7 +280,8 @@ set $white #ebdbb2
 # finds out, if available)
 bar {
   position top
-  font pango:DejaVu Sans Mono, FontAwesome 8
+  #font pango:DejaVu Sans Mono, FontAwesome 18
+  font pango:Inconsolata Nerd Font Mono, FontAwesome 10
   status_command i3status
 
   colors {
@@ -329,17 +330,15 @@ client.urgent           $red $red $white $red $red
 # Set background image
 exec --no-startup-id feh --randomize --bg-fill ~/Imagens/wallpaper/*
 
-# For unesp-ncc computer
 exec --no-startup-id "gnome-keyring-daemon -d"
 exec --no-startup-id nm-applet
-exec --no-startup-id Telegram -name Telegram
-exec --no-startup-id personal
-exec --no-startup-id gnome-calendar
+exec --no-startup-id telegram-desktop -name Telegram
+# exec --no-startup-id gnome-calendar
 exec --no-startup-id franz
 exec --no-startup-id nextcloud
 exec --no-startup-id keepassxc
 exec --no-startup-id pavucontrol
 exec --no-startup-id i3-sensible-terminal
-exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
-exec --no-startup-id i3-msg 'window 2; firefox -P easy; workspace 0'
+# exec --no-startup-id i3-msg 'window 0; exec firefox -P Personal; workspace 1'
+exec --no-startup-id i3-msg 'window 2; cabifox; workspace 0'
 # exec --no-startup-id "eval `ssh-agent -s -t 6000`"
