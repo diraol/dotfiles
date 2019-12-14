@@ -37,7 +37,7 @@
     exec swayidle -w \
              timeout 600 'swaylock -f -c 000000' \
              timeout 900 'swaymsg "output * dpms off"' \
-                  resume 'swaymsg "output * dpms on"' \
+                  resume 'swaymsg "output * dpms on"; swaymsg exec /home/diraol/.local/bin/monitor_setup' \
              before-sleep 'swaylock -f -c 000000'
 
     bindsym Ctrl+Alt+l exec swaylock -f -c 222222
