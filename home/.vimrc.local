@@ -35,7 +35,8 @@ let g:pymode_lint_cwindow = 1
 let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:pymode_virtualenv = 1
 " Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-<F7>>"
+let g:pymode_run_bind = "<C-S-e>"
+"<C-<F7>>"
 
 " Override view python doc key shortcut to Ctrl-Shift-d
 let g:pymode_doc_bind = "<C-S-d>"
@@ -49,13 +50,9 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 " unlet g:airline_left_sep
 " unlet g:airline_right_sep
 
-" Increase indenting for javascript and python
-autocmd FileType python,php setlocal sw=4 ts=4 sts=4 expandtab
-autocmd FileType javascript,html,css setlocal sw=2 ts=2 sts=2 expandtab
-
 " Enable Python syntax highlight
 let python_highlight_all = 1
-let g:pymode_rope=0 " Don't need this right now.
+let g:pymode_rope=1 " Don't need this right now.
 
 " Setting some helpfull key-bindings for tabbing
 "'Mapping ctrl+pgup and ctrl+pgdwn to change tabs inside vim
@@ -131,10 +128,18 @@ set spell spelllang=en_us,pt
 "setlocal spell!
 "set nospell
 
+" Set indenting configs
+autocmd FileType python setlocal sw=4 ts=4 sts=4 expandtab
+autocmd FileType php setlocal sw=4 ts=4 sts=4 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype css setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype scss setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype sass setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype vue setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype yml setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype cfg setlocal ts=2 sw=2 sts=2 expandtab
 
 " Deoplete Plugin - not using it for now
 " let g:deoplete#enable_at_startup = 1
@@ -150,6 +155,18 @@ let g:ctrlp_custom_ignore = {
 " Nerdcommenter
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+" Autopairs fix.
+" There is a problem with Autopairs that it is remapping <M-b> to  in insert
+" mode, thus making it impossible to write such character. This disables the
+" mapping that causes this strange behavior.
+let g:AutoPairsShortcutBackInsert=''
+
+
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

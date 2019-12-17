@@ -1,4 +1,4 @@
 " Enable powerline symbols
 let g:airline_powerline_fonts = 1
 
-let g:spf13_bundle_groups=['general', 'writing', 'programming', 'snipmate', 'python', 'scala', 'markdown']
+let g:spf13_bundle_groups=['general', 'writing', 'programming', 'snipmate', 'python', 'scala', 'markdown', 'javascript']
