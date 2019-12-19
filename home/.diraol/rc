@@ -1,18 +1,16 @@
 # Use solarized colors from sigurdga/ls-colors-solarized
 # eval `dircolors $HOME/.dircolors/dircolors`
 
+if [ -d "$HOME/tools/bin" ] ; then
+    PATH="$HOME/tools/bin:$PATH"
+fi
+
 # Other exports
 export DEFAULT_USER="diraol"
 export GITHUB_USER="diraol"
 export EDITOR=vim # Bitch, please.
 
-if [ -d "$HOME/tools/bin" ]; then
-  PATH="$HOME/tools/bin:$PATH"
-fi
-
-if [ -d "$HOME/.screenlayout" ]; then
-  PATH="$HOME/.screenlayout:$PATH"
-fi
+PATH="$HOME/.screenlayout:$HOME/tools/bin:$PATH"
 
 # Config for exporting SSH_AUTH_SOCK
 # Ref: https://eklitzke.org/using-ssh-agent-and-ed25519-keys-on-gnome
