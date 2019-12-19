@@ -49,3 +49,5 @@
 [commit]
   template = ~/.gittemplates/commit.txt
   cleanup = strip
+[includeIf "gitdir:~/devel/kobold/"]
+    path = .kobold/gitconfig
