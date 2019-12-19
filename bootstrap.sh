@@ -28,9 +28,13 @@ chsh -s /bin/zsh
 #########################################################################
 # Clone prezto-contrib
 #########################################################################
-if [ !-d "$HOME/.zprezto-contrib" ]
+if [ !-d "$HOME/.zprezto-contrib" ]; then
   git clone --recursive https://github.com/belak/prezto-contrib.git "$HOME/.zprezto-contrib"
 fi
+
+# Install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+sh ~/.fzf/install
 
 #########################################################################
 # Install awesome-terminal-fonts
