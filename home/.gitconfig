@@ -29,6 +29,10 @@
   pushdefault = origin
 [branch "master"]
   remote = upstream
+[includeIf "gitdir:~/.EverVim/"]
+  path = .diraol/gitconfig
+[includeIf "gitdir:~/.vim/"]
+  path = .diraol/gitconfig
 [includeIf "gitdir:~/.homesick/"]
   path = .diraol/gitconfig
 [includeIf "gitdir:~/devel/cabify/"]
