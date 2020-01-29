@@ -1,0 +1,39 @@
+#!/bin/bash
+# vim: filetype=bash:
+
+if [ -d "${HOME}/devel/cabify/product/systems/functionarium/fun" ] ; then
+        # shellcheck source=/dev/null
+        # shellcheck disable=SC2086
+        source <(set +f; cat ${HOME}/devel/cabify/product/systems/functionarium/fun/*.sh || { >&2 echo "Please install https://gitlab.otters.xyz/product/systems/functionarium#install"; echo "exit 42"; })
+fi
+
+export CABIFY_GITLAB_WORKSPACE_PATH="${HOME}/devel/cabify/"
+
+if [ -f "${HOME}/.cabify/gitnav" ] && [ ! -L "${HOME}/.local/bin/gitnav" ]; then
+        ln -s "${HOME}/.cabify/gitnav" "${HOME}/.local/bin/gitnav"
+fi
+
+# glindex
+
+function install_glindex() {
+    if [ "${GOPATH:-unset}" != "unset" ] && [ ! -d "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez" ]; then
+            mkdir -p "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez"
+            # shellcheck disable=SC2164
+            cd  "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez"
+            git clone git@gitlab.otters.xyz:jesus.vazquez/glindex.git
+            cd glindex || return
+            GOPATH="${GOPATH}" bash -x scripts/install.sh
+    fi
+}
+
+function update_glindex() {
+        if [ -d "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez/glindex" ]; then
+                install_glindex
+                # shellcheck disable=SC2164
+                cd "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez/glindex"
+                GOPATH="${GOPATH}" bash -x scripts/install.sh
+                bash -x scripts/update_db.sh
+        fi
+}
+
+install_glindex
