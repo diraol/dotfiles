@@ -1,3 +1,0 @@
-if [ -d "${HOME}/devel/cabify/product/systems/functionarium/fun" ] ; then
-    source <(set +f; cat ${HOME}/devel/cabify/product/systems/functionarium/fun/*.sh || { >&2 echo "Please install https://gitlab.otters.xyz/product/systems/functionarium#install"; echo "exit 42"; })
-fi
