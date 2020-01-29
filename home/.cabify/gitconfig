@@ -2,6 +2,10 @@
   name = Diego Rabatone Oliveira
   email = diego.rabatone@cabify.com
 
+[github]
+  user = diraol
+  email = diego.rabatone@cabify.com
+
 [url "git@gitlab.otters.xyz:"]
   username = diego.rabatone
   insteadOf = https://gitlab.otters.xyz/
