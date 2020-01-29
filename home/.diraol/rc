@@ -7,11 +7,13 @@
 
 # Loading most personalized env vars
 if [[ -f "${HOME}/.diraol/variables" ]]; then
+        # shellcheck source=/dev/null
         source "${HOME}/.diraol/variables"
 fi
 
 # Loading protected data
 if [[ -f "${HOME}/.diraol/protected_data" ]]; then
+        # shellcheck source=/dev/null
         source "${HOME}/.diraol/protected_data"
 fi
 
@@ -21,6 +23,7 @@ while IFS= read -r DIR; do
                 export PATH="${DIR}:${PATH}"
         fi
 done < <( cat <<-EOF
+${HOME}/.rbenv/bin
 /usr/local/go/bin
 /snap/bin
 ${GOPATH}/bin
@@ -33,23 +36,23 @@ EOF
 # Config for exporting SSH_AUTH_SOCK
 # Ref: https://eklitzke.org/using-ssh-agent-and-ed25519-keys-on-gnome
 # Check if it is really needed.
+# shellcheck disable=SC2046
 eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
 export SSH_AUTH_SOCK
 
 # Sourcing other config files
-for F in $(find ${HOME}/.diraol/ -name '_*'); do
-  source "$F"
-done
+find "${HOME}/.diraol" -name '_*' -exec source '{}' \;
 
 if [[ -d "${HOME}/.rbenv/bin" ]]; then
-    export PATH="${HOME}/.rbenv/bin:${PATH}"
     eval "$(rbenv init -)"
 fi
 
 if [[ -s "${NVM_DIR}/nvm.sh" ]]; then
+        # shellcheck source=/dev/null
         . "$NVM_DIR/nvm.sh"  # This loads nvm
 
         if [[ -s "${NVM_DIR}/bash_completion" && "${SHELL}" == "/bin/bash" ]]; then
+                # shellcheck source=/dev/null
                 . "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
         fi
 fi
@@ -57,4 +60,5 @@ fi
 # Setting env var to state we have already lodade this config file
 export DIRAOL_RC_LOADED="TRUE"
 
+# shellcheck source=/dev/null
 source "${HOME}/.diraol/_initial_load"
