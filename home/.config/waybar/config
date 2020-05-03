@@ -38,7 +38,8 @@
         "disk",
         "custom/left-arrow-light",
         "custom/left-arrow-dark",
-        "battery",
+        "battery#1",
+        "battery#2",
         "custom/left-arrow-light",
         "custom/left-arrow-dark",
         "tray"
@@ -83,8 +84,22 @@
         "interval": 5,
         "format": "Mem {}%"
     },
-    "battery": {
+    "battery#1": {
         "bat": "BAT0",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{icon} {capacity}% ",
+        "format-warning": "{icon} {capacity}%",
+        "format-critical": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", "", "", ""]
+    },
+    "battery#2": {
+        "bat": "BAT1",
         "states": {
             "warning": 20,
             "critical": 10
