@@ -46,6 +46,7 @@
     workspace 2 output DP-2 DP-1 eDP-1
     workspace 3 output DP-2 DP-1 eDP-1
     workspace 4 output DP-2 DP-1 eDP-1
+    workspace 10 output eDP-1 DP-2 DP-1
     workspace $wsp output eDP-1 DP-2 DP-1
     workspace $wsd output eDP-1 DP-2 DP-1
     workspace $wsm output eDP-1 DP-2 DP-1
