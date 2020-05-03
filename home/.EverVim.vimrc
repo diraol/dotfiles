@@ -225,4 +225,7 @@
     " Disable mouse interactions
         set mouse=
 
+    " Let vim-terraform to auto format on save
+        let g:terraform_fmt_on_save=1
+
 " }
