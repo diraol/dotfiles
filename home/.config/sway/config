@@ -93,6 +93,7 @@ bindsym --locked XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10
 bindsym --locked $mods+minus exec --no-startup-id brightnessctl set 10%-
 
 # Print Screen / Screenshot
+bindsym --locked Ctrl+Print exec --no-startup-id grim "${HOME}/sandbox/screenshot_$(date +%Y-%m-%d_%Hh%Mm%Ss).png"
 bindsym --locked Shift+Print exec --no-startup-id grim -g "$(slurp)" "${HOME}/sandbox/screenshot_$(date +%Y-%m-%d_%Hh%Mm%Ss).png"
 bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
 
