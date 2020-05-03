@@ -1,5 +1,5 @@
 ### Output configuration
-output eDP-1 scale 2
+output eDP-1
 set $mode_display AUX SCREEN: (h) HOME (s) SOLO
 mode "$mode_display" {
   bindsym h /home/diraol/.local/bin/monitor_setup "HOME"
