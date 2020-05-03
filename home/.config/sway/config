@@ -27,7 +27,7 @@
 #  set $menu j4-dmenu-desktop --dmenu="(cat ; (stest -flx $(echo ${PATH} | tr : ' ') | sort -u)) | bemenu -i" --term="i3-sensible-terminal"
 #  set $menu (cat ; (stest -flx $(echo ${PATH} | tr : ' ') | sort -u)) | bemenu -i | wofi --show drun -i | xargs swaymsg exec --
 #  set $menu wofi --show drun -i | xargs swaymsg exec --
-    set $menu wofi --show drun -i
+    set $menu wofi --show=drun -i -I -m
 
 ################################################################################
 ### Idle configuration
