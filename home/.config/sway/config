@@ -127,10 +127,12 @@ bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
     include workspaces
 
     # Specific workspaces apps
-    assign [app_id="personalfox"] →  workspace $wsp
-    assign [app_id="deezer"] →  workspace $wsd
-    assign [class="[Tt]elegram.*"] →  workspace $wst
-    assign [class="[Ff]ranz"] →  workspace $wsm
+    assign [app_id="personalfox"] → workspace $wsp
+    assign [app_id="deezer"] → workspace $wsd
+    assign [app_id="[Tt]elegram.*"] → workspace $wst
+    assign [class="[Tt]elegram.*"] → workspace $wst
+    assign [class="[Ff]ranz"] → workspace $wsm
+    assign [class="[Ss]ignal"] → workspace 10
 
 #
 # Layout stuff:
