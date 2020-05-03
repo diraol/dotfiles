@@ -7,6 +7,6 @@ StartupWMClass=canon-scanner
 StartupNotify=true
 Terminal=false
 Type=Application
-#Icon=/home/diraol/.local/share/icons/cabifox.svg
+Icon=/home/diraol/.local/share/icons/scanner.svg
 Categories=Accessories;
 MimeType=application/x-iso9660-appimage;

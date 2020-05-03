@@ -1,1 +1,15 @@
-home/.gitignore
+*~
+.~lock.*
+.*.swp
+.sass-cache/
+.DS_Store
+.netrwhist
+.idea
+.RData
+.Rhistory
+node_modules/
+doc/tags
+.diraol/protected_data
+*.pem
+id_rsa
+id_rsa.pub

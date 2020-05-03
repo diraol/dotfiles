@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=AskFox
+Encoding=UTF-8
+Comment=Firefox ASK Profile
+Exec=sh -c 'MOZ_ENABLE_WAYLAND=1 firefox -P askfox --name askfox --class askfox'
+StartupWMClass=askfox
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/home/diraol/.local/share/icons/askfox.svg
+Categories=Internet;
+MimeType=application/x-iso9660-appimage;
