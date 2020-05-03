@@ -1,56 +1,101 @@
-CURDIR=$(pwd)
 #########################################################################
 # Create some directories
 #########################################################################
-mkdir -p $HOME/tools/bin
-mkdir -p $HOME/sandbox
-mkdir -p $HOME/.fonts
+mkdir -p "${HOME}/tools/bin"
+mkdir -p "${HOME}/sandbox"
+mkdir -p "${HOME}/.fonts"
 
 #########################################################################
 # apt installs
 #########################################################################
-sudo apt install vim-nox gsimplecal
+sudo apt install \
+    build-essential \
+    curl \
+    exuberant-ctags \
+    gawk \
+    git \
+    gsimplecal \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncurses5-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    llvm \
+    make \
+    python-openssl \
+    sed \
+    snapd \
+    tk-dev \
+    tmux \
+    vim-nox \
+    wget \
+    xz-utils \
+    zlib1g-dev \
+    zsh
 
 #########################################################################
 # Clone prezto.
 #########################################################################
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+if [[ "${ZPREZTODIR:-unset}" == "unset" ]]; then
+       ZPREZTODIR="${ZDOTDIR:-$HOME}/.zprezto"
+fi
+if [[ ! -d "${ZPREZTODIR}" ]]; then
+	git clone --recurse https://github.com/sorin-ionescu/prezto.git "${ZPREZTODIR}"
+fi
 # Updating prezto and submodules
-cd $ZPREZTODIR
+cd "${ZPREZTODIR}"
 git pull
 git submodule update --init --recursive
-# Set zsh as default shell
-echo "Type your user password to alter your default shell to zsh"
-chsh -s /bin/zsh
+git submodule sync --recursive
+if [[ "${SHELL}" != "/bin/zsh" ]]; then
+	# # Set zsh as default shell
+	echo "Type your user password to alter your default shell to zsh"
+	chsh -s /bin/zsh
+fi
 
 #########################################################################
 # Clone prezto-contrib
 #########################################################################
-git clone --recursive https://github.com/belak/prezto-contrib.git "$HOME/.zprezto-contrib"
+if [[ ! -d '${ZPRESTODIR}/contrib' ]]; then
+	git clone --recurse https://github.com/belak/prezto-contrib.git "${ZPRESTODIR}/contrib"
+fi
+cd "${ZPRESTODIR}/contrib"
+git submodule sync --recursive
 
 # Install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-sh ~/.fzf/install
+if [[ ! -d '${HOME}/.fzf' ]]; then
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	bash ~/.fzf/install
+fi
 
 #########################################################################
 # Install awesome-terminal-fonts
 # Ref: https://github.com/gabrielelana/awesome-terminal-fonts.git
 #########################################################################
-SRCDIR=$HOME/tools/awesome-terminal-fonts
-git clone --depth 1 https://github.com/gabrielelana/awesome-terminal-fonts.git $SRCDIR 
-cd $SRCDIR
-for F in `find build -maxdepth 1 -type f -printf "%f\n"`; do
-  ln -s "build/$F" "$HOME/.fonts/$F"
-done
+# SRCDIR=$HOME/tools/awesome-terminal-fonts
+# if [[ ! -d "${SRCDIR}" ]]; then
+# 	git clone --depth 1 https://github.com/gabrielelana/awesome-terminal-fonts.git $SRCDIR
+# fi
+# cd $SRCDIR
+# 
+# git pull
+# for F in `find build -maxdepth 1 -type f -printf "%f\n"`; do
+# 	ln -s "$(pwd)/build/$F" "$HOME/.fonts/$F"
+# done
+# 
+# fc-cache -fv $HOME/.fonts
+# for F in `ls build/*.sh`; do
+#  	sh $F
+# done
 
-fc-cache -fv $HOME/.fonts
-for F in `ls build/*.sh`; do
-  sh $F
-done
-
-cd ~/.tools
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip
-unzip -o Inconsolata.zip
+cd ~/.fonts
+if [[ ! -f "${HOME}/.fonts/Inconsolata.zip" ]]; then
+	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Inconsolata.zip
+	unzip -o Inconsolata.zip
+fi
 fc-cache -fv
 
 #########################################################################
@@ -73,62 +118,62 @@ dconf load /org/gnome/terminal/ < $HOME/.homesick/repos/dotfiles/gnome_terminal_
 # Install powerline-patched-fonts
 # Ref: https://github.com/powerline/fonts
 #########################################################################
-SRCDIR=$HOME/sandbox/powerline-fonts
-git clone https://github.com/powerline/fonts.git --depth=1 $SRCDIR 
-cd $SRCDIR 
-sh install.sh
-rm -rf $SRCDIR
+# SRCDIR=$HOME/sandbox/powerline-fonts
+# git clone https://github.com/powerline/fonts.git --depth=1 $SRCDIR 
+# cd $SRCDIR 
+# sh install.sh
+# rm -rf $SRCDIR
 
 #########################################################################
 # Installing syntax checkers
 #########################################################################
-cd $HOME
-pip3 install pylint
+# cd $HOME
+# pip3 install pylint
 
 #########################################################################
 # Tmux plugin manager 
 #########################################################################
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-
+if [[ ! -d "${HOME}/.tmux/plugins/tpm" ]]; then
+	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+fi
 #########################################################################
 # VIM setup - my spf13 fork
 #########################################################################
-sh <(curl https://raw.githubusercontent.com/diraol/spf13-vim/3.0/bootstrap.sh -L)
+# sh <(curl https://raw.githubusercontent.com/diraol/spf13-vim/3.0/bootstrap.sh -L)
 # Vim pt_br spell
-mkdir -p $HOME/.vim/spell
-cp $HOME/.homesick/repos/dotfiles/spell/pt.utf-8.spl $HOME/.vim/spell/
+if [[ ! -d "${HOME}/.EverVim" ]]; then
+	git clone https://github.com/LER0ever/EverVim "${HOME}/.EverVim"
+	cd "${HOME}/.EverVim"
+	sh Boot-EverVim.sh
+fi
+if [[ ! -d "${HOME}/.vim/spell" ]]; then
+	mkdir -p $HOME/.vim/spell
+	cp $HOME/.homesick/repos/dotfiles/spell/pt.utf-8.spl $HOME/.vim/spell/
+fi
 
 #########################################################################
 # i3status helpers
 #########################################################################
-git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers
+# git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers
 
 #########################################################################
 # Python env setup
 #########################################################################
 # deps: 
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev
 # pyenv (using virtualenvwrapper)
-bash <(curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer)
-# Loading env variables to keep installation
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-# pyenv-virtualenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-# pyenv-virtualenvwrapper
-git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+if [[ ! -d "${HOME}/.pyenv" ]]; then
+	bash <(curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer)
+	# Loading env variables to keep installation
+	export PATH="~/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
 
-# ########################################################################
+#########################################################################
 # Enable ssh-agent service
 #########################################################################
 systemctl --user enable ssh-agent.service
 
-# ############################################################################
-# Setup scala/sbt
-##############################################################################
-sudo apt install scala
-echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-sudo apt update
-sudo apt install sbt
+
+sudo snap install keepassxc
+sudo snap install telegram-desktop
