@@ -19,10 +19,13 @@ fi
 
 # Setting path
 while IFS= read -r DIR; do
-        if [[ -d "${DIR}" && ":${PATH}:" != *":${DIR}:"* ]]; then
-                export PATH="${DIR}:${PATH}"
-        fi
+	export PATH="${DIR}:${PATH}"
 done < <( cat <<-EOF
+/bin
+/usr/bin
+/usr/sbin
+/usr/local/bin
+/usr/local/sbin
 ${HOME}/.rbenv/bin
 /usr/local/go/bin
 /snap/bin
@@ -32,6 +35,22 @@ ${HOME}/.local/bin
 ${HOME}/tools/bin
 EOF
 )
+
+# From: https://unix.stackexchange.com/questions/40749/remove-duplicate-path-entries-with-awk-command
+# Remove double items from path
+if [ -n "$PATH" ]; then
+  old_PATH=$PATH:; PATH=
+  while [ -n "$old_PATH" ]; do
+    x=${old_PATH%%:*}       # the first remaining entry
+    case $PATH: in
+      *:"$x":*) ;;          # already there
+      *) PATH=$PATH:$x;;    # not there yet
+    esac
+    old_PATH=${old_PATH#*:}
+  done
+  PATH=${PATH#:}
+  unset old_PATH x
+fi
 
 # Config for exporting SSH_AUTH_SOCK
 # Ref: https://eklitzke.org/using-ssh-agent-and-ed25519-keys-on-gnome
