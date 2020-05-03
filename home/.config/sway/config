@@ -256,5 +256,6 @@ include /etc/sway/config.d/*
 
 include init
 
-# Start at workspace 1
-workspace 1
+# Start workspace Messaging at eDP-1 and workspace 1 at DP-2
+workspace $wsm output eDP-1 DP-2 DP-1
+workspace 1 output DP-2 DP-1 eDP-1
