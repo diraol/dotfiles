@@ -1,3 +1,5 @@
+[user]
+	email = diraol@diraol.eng.br
 [color]
   ui = auto
   branch = auto
@@ -39,5 +41,7 @@
   path = .cabify/gitconfig
 [includeIf "gitdir:~/devel/easy/"]
   path = .cabify/gitconfig
+[includeIf "gitdir:~/devel/kobold/"]
+  path = .kobold/gitconfig
 [includeIf "gitdir:~/devel/personal/"]
   path = .diraol/gitconfig
