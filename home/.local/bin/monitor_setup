@@ -12,15 +12,22 @@ command -v jq > /dev/null 2>&1 || { echo "jq is not installed!"; exit 42; }
 # MONITOR/DISPLAY SPECS AND MODELS
 # Dell laptop screen
 DELL_ID="eDP-1"
-#DELL_MODEL="0x282B"
+DELL_MODEL="0x282B"
 DELL_XPS13_SPEC="mode 3840x2160@60Hz scale 2 pos 0 0"
+
+THINKPAD_P52s_ID="eDP-1"
+THINKPAD_P52s_MODEL="Chimei Innolux Corporation 0x15E5"
+THINKPAD_P52s_SPEC="mode 1920x1080@60Hz scale 1"
 
 LG_ULTRAWIDE_MODEL="LG ULTRAWIDE"
 LG_ULTRAWIDE_SPEC="mode 2560x1080@60Hz scale 1"
 
+eDP1_ID="${THINKPAD_P52s_ID}"
+eDP1_SPEC="${THINKPAD_P52s_SPEC}"
+
 function single_display(){
 	# shellcheck disable=2086
-	swaymsg output ${DELL_ID} ${DELL_XPS13_SPEC} enable
+	swaymsg output ${eDP1_ID} ${eDP1_SPEC} enable
 	swaymsg output DP-1 disable
 	swaymsg output DP-2 disable
 	swaymsg output DP-3 disable
@@ -40,7 +47,7 @@ function dual_display(){
 			;;
 	esac
 	# shellcheck disable=2086
-	swaymsg output ${DELL_ID} ${DELL_XPS13_SPEC} enable
+	swaymsg output ${eDP1_ID} ${eDP1_SPEC} enable
 	swaymsg output DP-1 disable
 	swaymsg output DP-2 disable
 	swaymsg output DP-3 disable
