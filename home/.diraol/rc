@@ -60,7 +60,7 @@ eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
 export SSH_AUTH_SOCK
 
 # Sourcing other config files
-for F in $(find "${HOME}/.diraol" -name '_*'); do
+for F in $(find "${HOME}/.diraol" -maxdepth 1 -not -type d -name '_*'); do
         # shellcheck source=/dev/null
         source "${F}"
 done
