@@ -80,12 +80,12 @@ fi
 # 	git clone --depth 1 https://github.com/gabrielelana/awesome-terminal-fonts.git $SRCDIR
 # fi
 # cd $SRCDIR
-# 
+#
 # git pull
 # for F in `find build -maxdepth 1 -type f -printf "%f\n"`; do
 # 	ln -s "$(pwd)/build/$F" "$HOME/.fonts/$F"
 # done
-# 
+#
 # fc-cache -fv $HOME/.fonts
 # for F in `ls build/*.sh`; do
 #  	sh $F
@@ -136,25 +136,6 @@ dconf load /org/gnome/terminal/ < $HOME/.homesick/repos/dotfiles/gnome_terminal_
 if [[ ! -d "${HOME}/.tmux/plugins/tpm" ]]; then
 	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
-#########################################################################
-# VIM setup - my spf13 fork
-#########################################################################
-# sh <(curl https://raw.githubusercontent.com/diraol/spf13-vim/3.0/bootstrap.sh -L)
-# Vim pt_br spell
-if [[ ! -d "${HOME}/.EverVim" ]]; then
-	git clone https://github.com/LER0ever/EverVim "${HOME}/.EverVim"
-	cd "${HOME}/.EverVim"
-	sh Boot-EverVim.sh
-fi
-if [[ ! -d "${HOME}/.vim/spell" ]]; then
-	mkdir -p $HOME/.vim/spell
-	cp $HOME/.homesick/repos/dotfiles/spell/pt.utf-8.spl $HOME/.vim/spell/
-fi
-
-#########################################################################
-# i3status helpers
-#########################################################################
-# git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers
 
 #########################################################################
 # Python env setup
