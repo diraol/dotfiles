@@ -24,6 +24,7 @@ done < <( cat <<-EOF
 /bin
 /usr/bin
 /usr/sbin
+/usr/local/go/bin
 /usr/local/bin
 /usr/local/sbin
 ${HOME}/.rbenv/bin
