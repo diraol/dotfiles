@@ -1,0 +1,3 @@
+[submodule "home/.diraol/vim"]
+	path = home/.diraol/vim
+	url = git@gitlab.com:diraol/my_vim.git
