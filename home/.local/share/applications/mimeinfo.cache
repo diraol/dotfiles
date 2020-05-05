@@ -1,2 +1,24 @@
 [MIME Cache]
+application/x-iso9660-appimage=askfox.desktop;cabifox.desktop;deezer.desktop;kobold.desktop;nextcloud.desktop;notrack.desktop;personal.desktop;pucminas.desktop;scanner.desktop;
+application/x-r-data=robo3t.desktop;rstudio.desktop;
+application/x-r-project=robo3t.desktop;rstudio.desktop;
+text/css=robo3t.desktop;rstudio.desktop;
+text/html=robo3t.desktop;rstudio.desktop;
+text/javascript=robo3t.desktop;rstudio.desktop;
+text/x-R=robo3t.desktop;rstudio.desktop;
+text/x-c++hdr=robo3t.desktop;rstudio.desktop;
+text/x-c++src=robo3t.desktop;rstudio.desktop;
+text/x-chdr=robo3t.desktop;rstudio.desktop;
+text/x-csrc=robo3t.desktop;rstudio.desktop;
+text/x-markdown=robo3t.desktop;rstudio.desktop;
+text/x-r-doc=robo3t.desktop;rstudio.desktop;
+text/x-r-history=robo3t.desktop;rstudio.desktop;
+text/x-r-html=robo3t.desktop;rstudio.desktop;
+text/x-r-markdown=robo3t.desktop;rstudio.desktop;
+text/x-r-presentation=robo3t.desktop;rstudio.desktop;
+text/x-r-profile=robo3t.desktop;rstudio.desktop;
+text/x-r-source=robo3t.desktop;rstudio.desktop;
+text/x-r-sweave=robo3t.desktop;rstudio.desktop;
+text/x-r=robo3t.desktop;rstudio.desktop;
+text/x-tex=robo3t.desktop;rstudio.desktop;
 x-scheme-handler/tg=telegramdesktop.desktop;
