@@ -1,1 +1,0 @@
-/home/diraol/.diraol/vim/main.vim
