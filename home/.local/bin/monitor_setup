@@ -17,7 +17,7 @@ DELL_XPS13_SPEC="mode 3840x2160@60Hz scale 2 pos 0 0"
 
 THINKPAD_P52s_ID="eDP-1"
 THINKPAD_P52s_MODEL="Chimei Innolux Corporation 0x15E5"
-THINKPAD_P52s_SPEC="mode 1920x1080@60Hz scale 1"
+THINKPAD_P52s_SPEC="mode 1920x1080@60Hz scale 1 pos 0 0"
 
 LG_ULTRAWIDE_MODEL="LG ULTRAWIDE"
 LG_ULTRAWIDE_SPEC="mode 2560x1080@60Hz scale 1"
@@ -37,9 +37,9 @@ function single_display(){
 function dual_display(){
 	SECOND_DISPLAY="$(swaymsg -t get_outputs | jq -r '.[] | select(.name!="eDP-1") | .name')"
 	SECOND_DISPLAY_MODEL="$(swaymsg -t get_outputs | jq -r '.[] | select(.name!="eDP-1") | .model')"
-	
+
 	case ${SECOND_DISPLAY_MODEL} in
-		${LG_ULTRAWIDE_MODEL})
+		"${LG_ULTRAWIDE_MODEL}")
 			SPEC="${LG_ULTRAWIDE_SPEC}"
 			;;
 		*)
