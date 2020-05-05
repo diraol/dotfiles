@@ -91,14 +91,6 @@ pip3 install pylint
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 #########################################################################
-# VIM setup - my spf13 fork
-#########################################################################
-sh <(curl https://raw.githubusercontent.com/diraol/spf13-vim/3.0/bootstrap.sh -L)
-# Vim pt_br spell
-mkdir -p $HOME/.vim/spell
-cp $HOME/.homesick/repos/dotfiles/spell/pt.utf-8.spl $HOME/.vim/spell/
-
-#########################################################################
 # i3status helpers
 #########################################################################
 git clone https://github.com/mikereinhold/i3status-helpers.git ~/.i3/status-helpers

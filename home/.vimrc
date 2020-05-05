@@ -1,0 +1,1 @@
+/home/diraol/.homesick/repos/dotfiles/home/.diraol/vim/main.vim
