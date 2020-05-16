@@ -1,5 +1,5 @@
 [user]
-	email = diraol@diraol.eng.br
+  email = diraol@diraol.eng.br
 [color]
   ui = auto
   branch = auto
@@ -14,8 +14,12 @@
   user = diraol
 [help]
   autocorrect = 20
+[pull]
+  rebase = true
 [push]
   default = current
+[rebase]
+  autoStash = true
 [receive]
   denyNonFastForwards = true
 [branch]
