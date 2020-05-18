@@ -1,6 +1,6 @@
 * {
     font-size: 14px;
-    font-family: Inconsolata Nerd Font;
+    font-family: "Inconsolata Nerd Font";
 }
 
 window#waybar {
@@ -25,34 +25,21 @@ window#waybar {
     background: #1a1a1a;
 }
 
-#window,
-#workspaces,
-#mode,
-#disk,
-#pulseaudio,
 #backlight,
-#network,
-#clock.1,
-#memory,
-#cpu,
-#temperature,
 #battery,
-#tray {
+#clock.1,
+#clock.2,
+#cpu,
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#tray,
+#window,
+#workspaces {
     background: #1a1a1a;
-}
-
-#custom-right-arrow-clock,
-#custom-left-arrow-clock {
-    color: #b58900;
-    font-size: 24px;
-    padding: 0;
-    margin: 0;
-}
-#clock.2 {
-    color: #fdf6e3;
-    font-weight: bold;
-    background: #b58900;
-    margin: 0;
 }
 
 #workspaces button {
@@ -81,9 +68,6 @@ window#waybar {
 #memory {
     color: #2aa198;
 }
-#temperature {
-    color: #b58900;
-}
 #cpu {
     color: #6c71c4;
 }
@@ -91,16 +75,17 @@ window#waybar {
     color: #859900;
 }
 
-#window,
-#mode,
-#clock,
-#pulseaudio,
 #backlight,
-#disk,
-#network,
-#memory,
+#battery,
+#clock.1,
+#clock.2,
 #cpu,
-#temperature,
-#battery {
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#window {
     padding: 0 10px;
 }
