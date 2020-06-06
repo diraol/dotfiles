@@ -151,7 +151,7 @@ bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
-    # Sticky mode for floating windows. The sticked window stay visible on all 
+    # Sticky mode for floating windows. The sticked window stay visible on all
     # workspaces.
     bindsym $mod+s sticky toggle
 
