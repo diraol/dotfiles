@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Nextcloud
 GenericName=File Synchronizer
-Exec=/tmp/.mount_nextclTksbXW/usr/bin/nextcloud
+Exec=/home/diraol/.local/bin/nextcloud
 Terminal=false
 Icon=nextcloud
 Categories=Network
