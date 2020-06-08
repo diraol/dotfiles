@@ -1,0 +1,155 @@
+###############################################################################
+#                                    EASY                                     #
+###############################################################################
+# Generic configuration - intended to be used in ALL easytaxi servers
+host *.easytaxi.*
+  IdentityFile ~/.easy/ssh/keys/easy_id_rsa
+  ServerAliveInterval 300
+  ServerAliveCountMax 2
+  user drabatone
+  port 22
+
+host easy_live
+  hostname bastion.easytaxi.com.br
+  user drabatone
+  IdentityFile ~/.easy/ssh/keys/easy_id_rsa
+  StrictHostKeyChecking no
+
+host easy_stg
+  hostname bastion.easytaxi.net.br
+  user drabatone
+  StrictHostKeyChecking no
+
+host easy_bastion_mysql
+  hostname bastionmysql.easytaxi.com.br
+  user drabatone
+  StrictHostKeyChecking no
+
+# Staging servers
+Host *.cazaifhqgjko.us-east-1.rds.amazonaws.com
+  ProxyCommand ssh -W %h:%p easy_bastion_mysql
+
+host easy_bastion_mongo
+  hostname bastionmongo.easytaxi.com.br
+  user drabatone
+  StrictHostKeyChecking no
+
+host gitlab.easytaxi.net.br
+  IdentityFile ~/.easy/ssh/keys/easytaxistaginginfravpc.pem
+  ServerAliveInterval 300
+  ServerAliveCountMax 2
+  user ubuntu
+  port 22
+
+# Mongo Live servers specific configuration
+Host mongo*.internal.easytaxi.com.br automate.internal.easytaxi.com.br
+  ProxyCommand ssh -N -W %h:%p easy_bastion_mongo
+  # user macgyver
+  # IdentityFile ~/.easy/ssh/keys/macgyverlive.pem
+
+# All other Live servers
+Host *.internal.easytaxi.com.br !mongo !mysql*
+  ProxyCommand ssh -W %h:%p easy_live
+
+# Staging servers
+Host *.internal.easytaxi.net.br !gitlab.internal.easytaxi.net.br *.mgmt.et-env.net
+  ProxyCommand ssh -W %h:%p easy_stg
+
+# http://airflow.easytaxi.com.br
+host live_metabase
+  # ProxyCommand ssh -W airflow.internal.easytaxi.com.br:22 easy_live
+  ProxyCommand ssh -W 172.42.50.14:22 easy_live
+  user drabatone
+
+# http://airflow.easytaxi.com.br
+host live_airflow
+  # ProxyCommand ssh -W airflow.internal.easytaxi.com.br:22 easy_live
+  ProxyCommand ssh -W 172.42.50.183:22 easy_live
+  IdentityFile ~/.easy/ssh/keys/easy_id_rsa
+  user drabatone
+
+# https://grafana.easytaxi.com.br/
+host live_influxdb
+  ProxyCommand ssh -W influxdb.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host live_consumers
+  ProxyCommand ssh -W 172.42.51.84:22 easy_live
+  user drabatone
+
+host live_kafka01
+  ProxyCommand ssh -W kafka-01.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host live_kafka02
+  ProxyCommand ssh -W kafka-02.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host live_kafka03
+  ProxyCommand ssh -W kafka-03.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host live_kafka04
+  ProxyCommand ssh -W kafka-04.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host live_kafka05
+  ProxyCommand ssh -W kafka-05.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host jenkins_slave
+  ProxyCommand ssh -W 172.42.50.95:22 easy_live
+  user jenkins
+  IdentityFile ~/.easy/ssh/keys/shaka.pem
+
+host live_redash
+  ProxyCommand ssh -W redash-new.internal.easytaxi.com.br:22 easy_live
+  user drabatone
+
+host stg_jenkins
+  ProxyCommand ssh -W 10.0.5.45:22 easy_stg
+
+host stg_influxdb
+  ProxyCommand ssh -W 10.0.2.45:8086 easy_stg
+  user drabatone
+
+host stg_consumers
+  ProxyCommand ssh -W containers-02.internal.easytaxi.net.br:22 easy_stg
+  user drabatone
+
+host bi_consumers_zangief
+  ProxyCommand ssh -W bi-consumers-zangief.easytaxi.net.br:22 easy_stg
+  user drabatone
+
+Host 172.42.* 172.17.12.118
+  # Server A: 172.42.51.129
+  # Server B: 172.42.51.199
+  ServerAliveInterval 20
+  ServerAliveInterval 60
+  TCPKeepAlive yes
+  ProxyCommand ssh -W %h:%p easy_live
+  user macgyver
+  IdentityFile ~/.easy/ssh/keys/macgyverlive.pem
+  # ProxyCommand ssh -q -A macgyver@easy_live nc %h %p
+  # StrictHostKeyChecking no
+  # UserKnownHostsFile /dev/null
+
+host kafka_viewer01
+  ProxyCommand ssh -W kafka_viewer01.internal.easytaxi.com.br:22 bastion.easytaxi.com.br
+  StrictHostKeyChecking no
+  User ubuntu
+  IdentityFile ~/.easy/ssh/keys/easynew-infra.pem
+
+Host 10.60.10.205
+  # Server A: 172.42.51.129
+  # Server B: 172.42.51.199
+  ServerAliveInterval 20
+  ServerAliveInterval 60
+  TCPKeepAlive yes
+  ProxyCommand ssh -W %h:%p easy_stg
+  user macgyver
+  IdentityFile ~/.easy/ssh/keys/macgyver_staain.pem
+  # ProxyCommand ssh -q -A macgyver@easy_live nc %h %p
+  # StrictHostKeyChecking no
+  # UserKnownHostsFile /dev/null
+
