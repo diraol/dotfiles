@@ -15,25 +15,33 @@ fi
 
 # glindex
 
-function install_glindex() {
-    if [ "${GOPATH:-unset}" != "unset" ] && [ ! -d "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez" ]; then
-            mkdir -p "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez"
-            # shellcheck disable=SC2164
-            cd  "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez"
-            git clone git@gitlab.otters.xyz:jesus.vazquez/glindex.git
-            cd glindex || return
-            GOPATH="${GOPATH}" bash -x scripts/install.sh
-    fi
-}
-
-function update_glindex() {
-        if [ -d "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez/glindex" ]; then
-                install_glindex
+function _glindex_install() {
+        if [ "${GOPATH:-unset}" != "unset" ] && [ ! -d "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez" ]; then
+                mkdir -p "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez"
+                CURR_DIR="$(pwd)"
                 # shellcheck disable=SC2164
-                cd "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez/glindex"
+                cd  "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez"
+                git clone git@gitlab.otters.xyz:jesus.vazquez/glindex.git
+                cd glindex || return
                 GOPATH="${GOPATH}" bash -x scripts/install.sh
-                bash -x scripts/update_db.sh
+                # shellcheck disable=SC2164
+                cd "${CURR_DIR}"
         fi
 }
 
-install_glindex
+function _glindex_update() {
+        if [ -d "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez/glindex" ]; then
+                _glindex_install
+                CURR_DIR="$(pwd)"
+                # shellcheck disable=SC2164
+                cd "${GOPATH}/src/gitlab.otters.xyz/jesus.vazquez/glindex"
+                git clean -dfX
+                git pull
+                GOPATH="${GOPATH}" bash -x scripts/install.sh
+                bash -x scripts/update_db.sh
+                # shellcheck disable=SC2164
+                cd "${CURR_DIR}"
+        fi
+}
+
+_glindex_install
