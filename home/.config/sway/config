@@ -129,8 +129,11 @@ bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
     # Specific workspaces apps
     assign [app_id="personalfox"] →  workspace $wsp
     assign [app_id="deezer"] →  workspace $wsd
+    assign [app_id="[Tt]elegram.*"] →  workspace $wst
     assign [class="[Tt]elegram.*"] →  workspace $wst
     assign [class="[Ff]ranz"] →  workspace $wsm
+    assign [app_id="[Ss]ignal.*"] →  workspace 10
+    assign [class="[Ss]ignal.*"] →  workspace 10
 
 #
 # Layout stuff:
@@ -146,7 +149,7 @@ bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
-    # Sticky mode for floating windows. The sticked window stay visible on all 
+    # Sticky mode for floating windows. The sticked window stay visible on all
     # workspaces.
     bindsym $mod+s sticky toggle
 
@@ -238,21 +241,18 @@ set $gray #a89984
 set $darkgray #1d2021
 set $white #ebdbb2
 
-#
+#end of window title bars & borders section
+include theme
+
+include /etc/sway/config.d/*
+
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
 }
-
-include theme
-
-#end of window title bars & borders section
-
-include /etc/sway/config.d/*
 
 include init
 
 # Start at workspace 1
 workspace 1
+#move workspace to right
