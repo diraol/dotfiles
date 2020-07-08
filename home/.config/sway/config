@@ -181,7 +181,7 @@ bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
         # calendar
         bindsym c [app_id="gnome-calendar"] scratchpad show
         # keepass
-        bindsym k [class="keepassxc"] scratchpad show
+        bindsym k [app_id="org.keepassxc.KeePassXC"] scratchpad show
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -201,10 +201,10 @@ bindsym --locked Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
     for_window [instance="zoom" title="Settings"] floating enable
 
     # Keepass scratchpad
-    for_window [class="(?i)keepassxc"] floating enable
-    for_window [class="(?i)keepassxc"] move scratchpad
-    for_window [class="(?i)keepassxc"] scratchpad show
-    bindsym $amods+k [class="(?i)keepassxc"] scratchpad show
+    for_window [app_id="org.keepassxc.KeePassXC"] floating enable
+    for_window [app_id="org.keepassxc.KeePassXC"] move scratchpad
+    for_window [app_id="org.keepassxc.KeePassXC"] scratchpad show
+    bindsym $amods+k [app_id="org.keepassxc.KeePassXC"] scratchpad show
 
     # Firefox
     for_window [title="Firefox - Sharing Indicator"] floating enable
