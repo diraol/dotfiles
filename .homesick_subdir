@@ -16,3 +16,5 @@ tools/nerd-fonts
 .diraol
 .local/bin
 .cabify
+.easy/ssh
+.cabify/ssh
