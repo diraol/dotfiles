@@ -12,8 +12,12 @@
   user = diraol
 [help]
   autocorrect = 20
+[pull]
+  rebase = true
 [push]
   default = current
+[rebase]
+  autoStash = true
 [receive]
   denyNonFastForwards = true
 [branch]
