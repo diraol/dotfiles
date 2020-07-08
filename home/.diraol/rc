@@ -41,7 +41,10 @@ eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
 export SSH_AUTH_SOCK
 
 # Sourcing other config files
-find "${HOME}/.diraol" -name '_*' -exec source '{}' \;
+for F in $(find "${HOME}/.diraol" -name '_*'); do
+        # shellcheck source=/dev/null
+        source "${F}"
+done
 
 if [[ -d "${HOME}/.rbenv/bin" ]]; then
     eval "$(rbenv init -)"
