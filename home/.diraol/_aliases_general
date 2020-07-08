@@ -11,3 +11,6 @@ alias tmux="tmux -2"
 
 # Smart alias to search for aliases based on regex
 alias sa='alias | grep -i'
+
+alias dock="monitor_setup 'HOME'"
+alias undock="monitor_setup 'SOLO'"
