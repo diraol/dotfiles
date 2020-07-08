@@ -14,3 +14,7 @@ alias sa='alias | grep -i'
 
 alias dock="monitor_setup 'HOME'"
 alias undock="monitor_setup 'SOLO'"
+
+# Aliasing ssh to change TERM to something other than tmux-256color that I use
+# locally since it won't always be present at remote servers.
+alias ssh="TERM=xterm-256color ssh"
